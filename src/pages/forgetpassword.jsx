@@ -48,16 +48,19 @@ export default class ForgetPassword extends React.Component {
                 <Card className="login-card">
                  <div> 
                     <h1>
-                        Fundoo Forget Password
+                     Password
                 </h1>
+                <div>
                     <TextField
                         id="email"
                         placeholder="email"
                         variant="outlined"
                         value={this.state.email}
                         onChange={this.handleEmail}
-                    /> <br /> <br /> <br />
+                    /> </div>
+                    <div>
                     <Button className = "submit-button" onClick={this.handleSubmit}>Login</Button>
+                    </div>
                  </div>  
                 </Card>
                 <Snackbar

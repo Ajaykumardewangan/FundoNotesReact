@@ -81,9 +81,12 @@ export default class Login extends React.Component {
             <div className="login-container">
                 <Card className="login-card">
                  <div> 
-                    <h1>
-                        Fundo Registration
-                   </h1>
+                     <div className="register">
+                    <h2>
+                        Registration
+                   </h2>
+                   </div>
+                   <div>
                 <TextField
                         id="firstName"
                         placeholder="First Name"
@@ -91,35 +94,42 @@ export default class Login extends React.Component {
                         value={this.state.firstName}
                         onChange={this.handleFirstName}
                     />
+                    </div><br/>
+                    <div>
                      <TextField
                         id="lastName"
                         placeholder="Last Name"
                         variant="outlined"
                         value={this.state.lastName}
                         onChange={this.handleLastName}
-                    /> 
+                    /> </div><br/>
+                    <div>
                     <TextField
                         id="email"
                         placeholder="email"
                         variant="outlined"
                         value={this.state.email}
                         onChange={this.handleEmail}
-                    />
+                    /></div><br/>
+                    <div>
                      <TextField
                         id="mobileNumber"
                         placeholder="mobile Number"
                         variant="outlined"
                         value={this.state.mobileNumber}
                         onChange={this.handleMobileNumber}
-                    /> 
+                    /> </div><br/>
+                    <div>
                     <TextField
                         id="password"
                         placeholder="password"
                         variant="outlined"
                         value={this.state.password}
                         onChange={this.handlePassword}
-                    />
+                    /></div><br/>
+                    <div>
                     <Button className = "submit-button" onClick={this.handleSubmit}>Register</Button>
+                    </div>
                  </div>  
                 </Card>
                 <Snackbar

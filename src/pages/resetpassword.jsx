@@ -72,7 +72,7 @@ export default class ResetPassword extends React.Component {
                 <Card className="login-card">
                     <div>
                         <h1>
-                            Fundoo Reset Password
+                             Reset
                         </h1>
                         <TextField
                             id="password"

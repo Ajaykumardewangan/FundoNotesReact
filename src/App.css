@@ -26,11 +26,14 @@
   justify-content: center;
   margin-top: 100px;
 }
-.login-card {
+.login-card{
   width: 300px;
- display: flex;
- justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .submit-button {
   margin-left: auto;
+}
+.register{
+  text-align: center;
 }
