@@ -61,6 +61,12 @@ export default class ForgetPassword extends React.Component {
                     <div>
                     <Button className = "submit-button" onClick={this.handleSubmit}>Login</Button>
                     </div>
+                    <div>
+                    <a href="registration">Registration</a>
+                    </div>
+                    <div>
+                    <a href="login">login</a>
+                    </div>
                  </div>  
                 </Card>
                 <Snackbar

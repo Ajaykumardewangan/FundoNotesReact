@@ -37,3 +37,10 @@
 .register{
   text-align: center;
 }
+
+#search {
+  margin-left: 100px;
+}
+.icons-button {
+  margin-right: 30px;
+}
