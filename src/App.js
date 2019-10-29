@@ -6,6 +6,7 @@ import Dashboard from './components/dashboard';
 import ForgetPassword from './pages/forgetpassword';
 import ResetPassword from './pages/resetpassword'
  import './App.css';
+import TemporaryDrawer from './components/drawer';
 function App() {
   return (
     <div>
@@ -13,9 +14,10 @@ function App() {
         <Switch>
           <Route path='/login' component={Login} />
           <Route path='/registration' component={Registration} />
-          <Route path='/dashboard' component={Dashboard} />
           <Route path='/forgetpassword' component={ForgetPassword} />
           <Route path='/resetpassword/:token' component={ResetPassword} />
+          <Route path='/dashboard' component={Dashboard} />
+          <Route path='/drawer' component={TemporaryDrawer} />
         </Switch>
       </Router>
     </div>

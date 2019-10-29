@@ -14,8 +14,6 @@ import ClearIcon from '@material-ui/icons/Clear';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import ViewStreamIcon from '@material-ui/icons/ViewStream';
 import SettingsIcon from '@material-ui/icons/Settings';
-
-
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
@@ -123,6 +121,7 @@ export default function Dashboard() {
     </Menu>
   );
 
+
   return (
     //   for desktop view
     <div className={classes.grow}>
@@ -133,10 +132,11 @@ export default function Dashboard() {
             className={classes.menuButton}
             aria-label="open drawer"
           >
+            
             <MenuIcon />
           </IconButton>
+          <img src={require('../assets/images/keep.png')} alt=""/>
           <Typography className={classes.title} variant="h6" noWrap>
-            <img src="/keep.png" alt=''></img>  
             <span>Fundo</span>
           </Typography>
           <div className={classes.search} id="search">
@@ -151,7 +151,7 @@ export default function Dashboard() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-            <IconButton >
+            <IconButton>
                 <ClearIcon />
             </IconButton>
           </div>
@@ -175,7 +175,7 @@ export default function Dashboard() {
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
             >
-              <AccountCircle />
+              <AccountCircle/>
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
