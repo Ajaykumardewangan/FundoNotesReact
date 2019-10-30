@@ -38,12 +38,16 @@
   text-align: center;
 }
 
-/* #search {
-  margin-left: 100px;
-} */
+#search {
+  margin-left: 8vw;
+}
 .icons-button {
-  margin-right: 30px;
+  margin-right: 2vw;
 }
 .view-container {
   opacity: 0;
+}
+.keep-img {
+  width: 40px;
+  height: 40px;
 }

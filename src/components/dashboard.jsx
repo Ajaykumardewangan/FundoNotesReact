@@ -14,15 +14,17 @@ import ClearIcon from '@material-ui/icons/Clear';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import ViewStreamIcon from '@material-ui/icons/ViewStream';
 import SettingsIcon from '@material-ui/icons/Settings';
+import { Drawer } from '@material-ui/core';
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(1),
   },
   title: {
     display: 'none',
+    marginLeft:theme.spacing(1),
     color: '#000000',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
@@ -61,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: 700,
+      width: 650,
       height:35,
     },
   },
@@ -101,6 +103,10 @@ export default function Dashboard() {
     //handleMobileMenuClose();
   };
 
+  const openDrawer  = () => {
+    return <Drawer/>
+  }
+
 //   const handleMobileMenuOpen = event => {
 //     setMobileMoreAnchorEl(event.currentTarget);
 //   };
@@ -128,14 +134,14 @@ export default function Dashboard() {
       <AppBar position="static">
         <Toolbar style={{ backgroundColor: '#FFFFFF' }}>
           <IconButton
+            onClick={openDrawer}
             edge="start"
             className={classes.menuButton}
             aria-label="open drawer"
           >
-            
             <MenuIcon />
           </IconButton>
-          <img src={require('../assets/images/keep.png')} alt=""/>
+          <img src={require('../assets/images/keep.png')} alt="" className="keep-img"/>
           <Typography className={classes.title} variant="h6" noWrap>
             <span>Fundo</span>
           </Typography>
@@ -151,13 +157,15 @@ export default function Dashboard() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
+            {/* <div>
             <IconButton>
                 <ClearIcon />
             </IconButton>
+            </div> */}
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-          <div className="icons-button">
+          {/* <div className="icons-button"> */}
             <IconButton >
                 <RefreshIcon />
             </IconButton>
@@ -167,7 +175,7 @@ export default function Dashboard() {
             <IconButton >
                 <SettingsIcon />
             </IconButton>
-            </div>
+            {/* </div> */}
             <IconButton
               edge="end"
               aria-label="account of current user"
