@@ -51,3 +51,58 @@
   width: 40px;
   height: 40px;
 }
+.search {
+  display: flex;
+  border-radius: 8px;
+  border: 0px;
+  font-size: 15px; 
+ margin-left: 40px;
+  background: #f5f5f5;
+  justify-content: center;
+  width:52vw;
+  height: 50px;
+  align-items: center;
+  color:black;
+}
+
+.searchbar{
+  width:100%;
+  float: left;
+  display: flex;
+  margin-left: 10px;
+  color: black;
+}
+.labelcontent{
+  display: flex;
+  border-radius: 50px 50px 50px 50px;
+ border: none;
+ outline-style:hidden;
+  width:100%;
+  margin :0.5px 0.5px 0.5px 0.5px;
+  display: inline-block;
+  box-shadow: none;
+  background-color: yellow;
+}
+.labeltext{
+  float: left;
+  width: 142px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  margin-top: 10px;
+  
+}
+.labelicon{
+  height: 24px;
+width: 24px;
+float: left;
+margin-top: 8px;
+vertical-align: middle;
+}
+.profile-div {
+ position: absolute;
+ right: 0;
+}
+.icons-div {
+  margin-left: 7vw;
+}

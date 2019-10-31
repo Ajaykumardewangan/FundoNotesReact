@@ -2,11 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from './pages/login';
 import Registration from './pages/registration';
-import Dashboard from './components/dashboard';
+
 import ForgetPassword from './pages/forgetpassword';
 import ResetPassword from './pages/resetpassword'
+import Sidenav from './pages/sidenav';
+import Header from './pages/header';
  import './App.css';
-import TemporaryDrawer from './components/drawer';
+
 function App() {
   return (
     <div>
@@ -16,8 +18,9 @@ function App() {
           <Route path='/registration' component={Registration} />
           <Route path='/forgetpassword' component={ForgetPassword} />
           <Route path='/resetpassword/:token' component={ResetPassword} />
-          <Route path='/dashboard' component={Dashboard} />
-          <Route path='/drawer' component={TemporaryDrawer} />
+          <Route path='/sidenav' component={Sidenav} />
+          
+          <Route path='/header' component={Header} />
         </Switch>
       </Router>
     </div>
