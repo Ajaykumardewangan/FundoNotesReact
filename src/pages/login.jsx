@@ -44,7 +44,7 @@ export default class Login extends React.Component {
                 localStorage.setItem('token', res.data.msg)
                 console.log('token hai : ', res.data.msg);
                 
-                this.props.history.push('/dashboard')
+                this.props.history.push('/header')
                 
             }).catch(err=>{
                 console.log("Error after hitting login api  ",err);

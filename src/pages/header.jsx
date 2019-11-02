@@ -19,6 +19,8 @@ import AppsIcon from '@material-ui/icons/Apps';
 
 import { Grid } from '@material-ui/core';
 import Sidenav from '../pages/sidenav'
+import DisplayNote from '../pages/displaynote';
+import CreateNote from '../pages/createnote';
 
 
 export default class PrimarySearchAppBar extends Component {
@@ -88,6 +90,12 @@ export default class PrimarySearchAppBar extends Component {
             </div>
           </Toolbar>
         </AppBar>
+        <div>
+          <CreateNote/>
+        </div>
+        <div>
+          <DisplayNote/>
+          </div>
       </div>
     );
   }

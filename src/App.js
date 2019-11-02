@@ -2,11 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from './pages/login';
 import Registration from './pages/registration';
-
+import NoteDialogBox from './pages/notedialogbox'
 import ForgetPassword from './pages/forgetpassword';
 import ResetPassword from './pages/resetpassword'
 import Sidenav from './pages/sidenav';
 import Header from './pages/header';
+import DisplayNote from './pages/displaynote';
+import Property from './pages/properties';
+import CreateNote from './pages/createnote';
  import './App.css';
 
 function App() {
@@ -19,8 +22,11 @@ function App() {
           <Route path='/forgetpassword' component={ForgetPassword} />
           <Route path='/resetpassword/:token' component={ResetPassword} />
           <Route path='/sidenav' component={Sidenav} />
-          
+          <Route path='/displaynote' component={DisplayNote} />
+          <Route path='/property' component={Property} />
+          <Route path='/createnote' component={CreateNote}/>
           <Route path='/header' component={Header} />
+          <Route path='/notedialogbox' component={NoteDialogBox} />
         </Switch>
       </Router>
     </div>

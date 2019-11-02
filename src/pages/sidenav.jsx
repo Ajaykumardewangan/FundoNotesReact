@@ -10,6 +10,9 @@ import DeleteTwoToneIcon from '@material-ui/icons/DeleteTwoTone';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import Button from '@material-ui/core/Button';
+import {getLables} from '../services/labelservice'
+import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
+
 const theme = createMuiTheme({
     overrides: {
         MuiDrawer: {
@@ -25,14 +28,33 @@ const theme = createMuiTheme({
     }
 })
 export default class Sidenav extends Component {
+    componentDidMount() {
+        getLables(localStorage.getItem('token')).then(res => {
+           console.log('all lables are' + res.data);
+           this.setState({
+               allLabels: res.data
+           });
+       }).
+           catch((err) => {
+               console.log('error ' + err);
+           })
+   };
     constructor(props) {
         super(props);
         this.state = {
-
+            allLabels:[]
         }
     }
 
     render() {
+        let displayallLables = this.state.allLabels.map((object,index) => {
+            return (
+                <Button >
+                    <LabelOutlinedIcon  />
+                    <span className="labeltext">{object.labelName}</span>
+                </Button>
+            )
+        })
         return (
             <div>
                 <MuiThemeProvider theme={theme}>
@@ -44,6 +66,12 @@ export default class Sidenav extends Component {
                         <NotificationsIcon className="labelicon"/>
                         <span className="labeltext">Reminders</span></Button>
                         <Divider />
+                        <span>Label</span>
+                        <div>
+                        <div>
+                            {displayallLables}
+                        </div>
+                        </div>
                         <Button className="labelcontent">
                             <CreateOutlinedIcon className="labelicon"/>
                             <span className="labeltext">Edit Lables</span></Button>
