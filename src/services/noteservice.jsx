@@ -23,3 +23,19 @@ export  function deleteNote(token,noteId) {
     return axios.delete(baseURL+'/notes/delete_note?noteId='+noteId,{headers: {'token' :  token}}
     )
 }
+
+export  function archiveNote(token,noteId) {
+    console.log('user123' ,localStorage.getItem('token'));
+    console.log('archive note :  ',noteId);
+    return axios.put(baseURL+'/notes/archive?noteId='+noteId,null,{headers: {'token' :  token}}
+    )
+}
+
+export  function changeColor(color,token,noteId) {
+    console.log('user123' ,localStorage.getItem('token'));
+    console.log(' change color :  ',noteId);
+    console.log('color: ',color);
+    
+    return axios.put(baseURL+'/notes/change-color/'+color+'?noteId='+noteId,null,{headers: {'token' :  token}}
+    )
+}

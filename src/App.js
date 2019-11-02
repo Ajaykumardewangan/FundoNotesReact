@@ -10,6 +10,7 @@ import Header from './pages/header';
 import DisplayNote from './pages/displaynote';
 import Property from './pages/properties';
 import CreateNote from './pages/createnote';
+import Color from './pages/color';
  import './App.css';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path='/createnote' component={CreateNote}/>
           <Route path='/header' component={Header} />
           <Route path='/notedialogbox' component={NoteDialogBox} />
+          <Route path='/color' component={Color} />
         </Switch>
       </Router>
     </div>

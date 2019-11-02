@@ -7,16 +7,14 @@ import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import Menu from '@material-ui/core/Menu';
-import {deleteNote} from '../services/noteservice'
+import {deleteNote,archiveNote} from '../services/noteservice';
+import Color from '../pages/color';
 
 const options = [
     'None',
     'Atria'
-    
   ];
   
-  
-
 export default class properties extends Component {
     constructor(props) {
         console.log('inside constructor of properties: ')
@@ -24,16 +22,11 @@ export default class properties extends Component {
         super();
         this.state1 = {
              noteId:props.id,
+             anchorEl:false,
         }
         this.state = {
             ITEM_HEIGHT : 48,
             anchorEl:'',
-            options : [
-                'Delete Note',
-                'Add Lebel',
-                'Comming Soon' ,
-            ]
-
         }
     }
     handleClick = event => {
@@ -42,7 +35,7 @@ export default class properties extends Component {
         })
     };
 
-    handleClose = () => {
+    handleDeleteNote = () => {
         console.log('inside close method of proprties: ');
         console.log(this.state1.noteId);
         deleteNote(localStorage.getItem('token'),this.state1.noteId).then(res=>{
@@ -56,6 +49,25 @@ export default class properties extends Component {
             anchorEl:null
         })
     };
+
+    handleArchiveNote = () => {
+        console.log('inside close method of proprties: ');
+        console.log(this.state1.noteId);
+        archiveNote(localStorage.getItem('token'),this.state1.noteId).then(res=>{
+            console.log("Response after hitting login api is ",res);
+            // this.props.history.push('/login')
+            
+        }).catch(err=>{
+            console.log("Error after hitting login api  ",err);
+        })
+        this.setState({
+            anchorEl:null
+        })
+    };
+
+    handleAddLabel = () => {
+
+    }
     
     render() {
         return (
@@ -72,7 +84,7 @@ export default class properties extends Component {
                  </div>  
                  <div>
                     <IconButton style={{padding:'4px'}}>
-<ColorLensOutlinedIcon/>
+<Color id={this.props.id}/>
                         </IconButton>
                  </div>  
                  <div>
@@ -81,7 +93,7 @@ export default class properties extends Component {
                         </IconButton>
                  </div>  
                  <div>
-                    <IconButton style={{padding:'4px'}}>
+                    <IconButton style={{padding:'4px'}} onClick={this.handleArchiveNote}>
 <ArchiveOutlinedIcon/>
                         </IconButton>
                  </div>  
@@ -108,22 +120,19 @@ export default class properties extends Component {
                         },
                     }}
                 >
-                    {this.state.options.map(option => (
                         <div>
-                        <button>
- 
-                        <MenuItem key={option} selected={option === 'Pyxis'} onClick={this.handleClose} >
-                            {option}
+                        <MenuItem  >
+                        <button onClick={this.handleDeleteNote}>  delete note</button>
                         </MenuItem>
-                        </button>
+                        <MenuItem >
+                        <button onClick={this.handleAddLabel}> add label</button>
+                        </MenuItem>
                         </div>
-                    ))}
                 </Menu>
             </div >
             <div>
-
             </div>
-                 </div>   
+        </div>   
           
         )
     }
