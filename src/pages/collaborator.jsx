@@ -6,7 +6,7 @@ import {
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 import ClearOutlinedIcon from '@material-ui/icons/ClearOutlined';
 import DoneOutlinedIcon from '@material-ui/icons/DoneOutlined';
-import { removeCollabNotes, searchUserList, addCollaboratorNotes, getUserEmails, getAllNotes } from '../services/noteservice'
+import { removeCollabNotes, searchUserList,getCollaboratedUser, addCollaboratorNotes, getUserEmails, getAllNotes } from '../services/noteservice'
 const theme = createMuiTheme({
     overrides: {
         MuiDialogContent: {
@@ -36,6 +36,8 @@ export default class Collaborator extends Component {
         }
     }
     componentWillMount = () => {
+        console.log('inside willmount');
+        
         this.getEmails();
     }
     handleCollabChange = (e) => {
@@ -77,6 +79,19 @@ export default class Collaborator extends Component {
         // }).catch(err => {
         //     console.log("err in hitting user api", err);
         // })
+
+        getCollaboratedUser(this.state.noteId).then((res) => {
+            let users = res.data.map((key) => {
+                return key
+            })
+            console.log('inside getCollborator : ',users);
+            
+            this.setState({
+                AllCollaborators: users
+            })
+        }).catch(err => {
+            console.log("err in hitting user api", err);
+        })
     }
 
     // handleSearch = () => {
@@ -98,16 +113,16 @@ export default class Collaborator extends Component {
             searchText: e.target.value
         })
     }
-    handleClear = (userId) => {
-        let data = {
-            id: this.props.noteToCollab,
-            collaboratorUserId: userId
-        }
-        console.log("collab id", data);
-        removeCollabNotes(this.state.noteId,'dewangan143.ajay@gmail.com').then((res) => {
+    handleClear = (email) => {
+        // let data = {
+        //     id: this.props.noteToCollab,
+        //     collaboratorUserId: userId
+        // }
+        console.log("collab email", email);
+        removeCollabNotes(this.state.noteId,email).then((res) => {
             console.log("res after hitting remove collaborator api is ", res);
-            this.props.remCollab(true);
-            this.getNotes();
+            // this.props.remCollab(true);
+            // this.getNotes();
         }).catch((err) => {
             console.log("err in hitting collaborator api", err);
         })
@@ -219,29 +234,28 @@ export default class Collaborator extends Component {
                                                 {localStorage.getItem('email')}
                                             </div>
                                         </div>
-                                        {this.state.notes.map(key => {
-                                            // console.log("this.porops.collab", this.props.noteToCollab);
-                                            return (
-                                                key.id === this.props.noteToCollab ?
+                                        {/* {this.state.notes.map(key => {
+                                             return (  */}
+                                                {/* key.id === this.props.noteToCollab ? */}
                                                     <div className="map-container">
                                                         <div className="secondCollab-avatar">
                                                             <div className="secondCollab-secondAvatar">
-                                                                {key.collaborators.map(col => {
+                                                                {this.state.AllCollaborators.map(col => {
                                                                     return (
                                                                         <div className="para-collab">
-                                                                            <Tooltip title={col.email}>
+                                                                            <Tooltip title={col}>
                                                                                 <Avatar style={{
                                                                                     cursor: "pointer",
                                                                                     width: "35px", height: "35px"
                                                                                 }}>
-                                                                                    {col.firstName.toUpperCase().charAt(0)}
+                                                                                    {col.toUpperCase().charAt(0,5)}
                                                                                 </Avatar>
                                                                             </Tooltip>
-                                                                            <span style={{ fontFamily: 'Roboto' }}>
-                                                                                {col.email}
+                                                                            <span style={{ fontFamily: 'Roboto', marginLeft: '-175px' }}>
+                                                                                {col}
                                                                             </span>
                                                                             <ClearOutlinedIcon
-                                                                                onClick={() => this.handleClear(col.userId)} />
+                                                                                onClick={() => this.handleClear(col)} />
                                                                         </div>
                                                                     )
                                                                 })
@@ -249,9 +263,9 @@ export default class Collaborator extends Component {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    : (null))
-                                        })
-                                        }
+                                         {/* : (null)) 
+                                        }) */}
+                                        {/* } */}
                                         <div>
                                             <div className="collaborator-avtar-email">
                                                 <div className="collaborator-secondAvatar">

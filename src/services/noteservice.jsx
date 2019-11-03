@@ -51,7 +51,7 @@ return axios.put(baseURL+'/notes/reminder?noteId='+noteId+'&reminderDate='+datet
         )
 }
 export function removeCollabNotes(noteId,email){
-    return axios.delete(baseURL+'/notes/removecollaborator?noteId='+noteId+'&email'+email,{headers: {'token' :  localStorage.getItem('token')}})
+    return axios.delete(baseURL+'/notes/removecollaborator?noteId='+noteId+'&email='+email,{headers: {'token' :  localStorage.getItem('token')}})
 }
 export function addCollaboratorNotes(noteId,email){
     console.log('inside service  add cola :',noteId);
@@ -66,4 +66,8 @@ export function getAllNotes(){
 }
 export function searchUserList(){
     
+}
+
+export function getCollaboratedUser(noteId) {
+    return axios.get(baseURL+'/notes/getCollaboratedUser?noteId='+noteId,{headers: {'token' :  localStorage.getItem('token')}});
 }
