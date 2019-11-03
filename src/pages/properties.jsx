@@ -9,6 +9,8 @@ import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import Menu from '@material-ui/core/Menu';
 import {deleteNote,archiveNote} from '../services/noteservice';
 import Color from '../pages/color';
+import Reminder from '../pages/addreminder';
+import Collaborator from './collaborator';
 
 const options = [
     'None',
@@ -74,12 +76,12 @@ export default class properties extends Component {
             <div className='iconDisplay'>
                 <div>
                     <IconButton style={{padding:'4px'}}>
-<AddAlertOutlinedIcon/>
+<Reminder id={this.props.id}/>
                         </IconButton>
                  </div>  
                  <div>
                     <IconButton style={{padding:'4px'}}>
-<PersonAddOutlinedIcon/>
+<Collaborator id={this.props.id}/>
                         </IconButton>
                  </div>  
                  <div>

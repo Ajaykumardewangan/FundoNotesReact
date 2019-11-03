@@ -172,3 +172,114 @@ white-space: nowrap;
   height: 30px;
   margin: 5px;
 }
+
+/* -----------------------------------------collaborator---------------------------------- */
+
+.collaborator-buttons{
+    display: flex;
+    width: 94%;
+    background-color: rgba(0,0,0,0.07);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    padding: 10px 15px;
+}
+.collaborator-avtar-email{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+.collaborator-name-email{
+  width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.collab-card1{
+  overflow-y: scroll;
+  height: 150px;
+}
+/*---------------------------------------------collaborator------------------------------------------------------*/
+.editor-page{
+  width: 82%;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+margin-top: 4%;
+
+}
+/* .editor-comp{
+  margin-top: 10%;
+} */
+.editor-title{
+  font-size: 28px;
+  word-wrap: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden !important;
+  padding: 10px;
+}
+.editor-description{
+  font-size: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden !important;
+    word-wrap: break-word;
+    padding: 10px;
+}
+.editor-close{
+  display: flex;
+  /* justify-content: flex-end; */
+  /* margin-top:10%; */
+}
+.editor-close-title{
+  display: flex;
+  flex-direction: row;
+  margin-top:6%;
+  justify-content: space-between;
+}
+.editor-like-date{
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+}
+.editor-assignment{
+  /* display: flex;
+  flex-direction: row; */
+}
+.editor-thumb{
+  padding: 10px;
+  display: flex;
+}
+.editor-questionasked{
+  font-size: 20px;
+  word-wrap: break-word;
+}
+.editor-contents{
+  margin: 2% 0% 2% 0%;
+  overflow-y: auto;
+  max-height: 80px;
+}
+.editorPage{
+  width:100%;
+  display: flex;
+  justify-content:center;
+  /* padding: 30px; */
+  
+  }
+  .editor-asked-msg{
+    padding: 15px;
+  }
+  .editor-thumbsUp{
+    padding-left: 15px;
+  }
+  .para-collab{
+    display: flex;
+    justify-content: space-between;
+}
+.collab-dialogbox {
+  width: 500px;
+}

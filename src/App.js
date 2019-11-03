@@ -11,6 +11,8 @@ import DisplayNote from './pages/displaynote';
 import Property from './pages/properties';
 import CreateNote from './pages/createnote';
 import Color from './pages/color';
+import Remainder from './pages/addreminder';
+import Collaborator from './pages/collaborator'
  import './App.css';
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
           <Route path='/header' component={Header} />
           <Route path='/notedialogbox' component={NoteDialogBox} />
           <Route path='/color' component={Color} />
+          <Route path='/reminder' component={Remainder} />
+          <Route path='/collaborator' component={Collaborator} />
         </Switch>
       </Router>
     </div>
