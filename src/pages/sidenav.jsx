@@ -46,10 +46,23 @@ export default class Sidenav extends Component {
         }
     }
 
+    handleGetNotesOfLabel= () =>{
+        
+    }
+    handleGetReminderNotes= () =>{
+        this.props.history.push('/reminder'); 
+    }
+    handleGetArchivedNotes= () =>{
+        
+    }
+    handleGetTrashedNotes= () =>{
+        
+    }
+
     render() {
         let displayallLables = this.state.allLabels.map((object,index) => {
             return (
-                <Button >
+                <Button onClick={this.handleGetNotesOfLabel}>
                     <LabelOutlinedIcon  />
                     <span className="labeltext">{object.labelName}</span>
                 </Button>
@@ -62,7 +75,7 @@ export default class Sidenav extends Component {
                         <Button className="labelcontent">
                             <EmojiObjectsOutlinedIcon className="labelicon" />
                             <span className="labeltext">Notes</span></Button>
-                        <Button className="labelcontent">
+                        <Button className="labelcontent" onClick={this.handleGetReminderNotes}>
                         <NotificationsIcon className="labelicon"/>
                         <span className="labeltext">Reminders</span></Button>
                         <Divider />
@@ -76,10 +89,10 @@ export default class Sidenav extends Component {
                             <CreateOutlinedIcon className="labelicon"/>
                             <span className="labeltext">Edit Lables</span></Button>
                         <Divider />
-                        <Button className="labelcontent">
+                        <Button className="labelcontent" onClick={this.handleGetArchivedNotes}>
                             <ArchiveOutlinedIcon  className="labelicon"/>
                             <span className="labeltext">Archive</span></Button>
-                        <Button className="labelcontent">
+                        <Button className="labelcontent" onClick={this.handleGetTrashedNotes}>
                             <DeleteTwoToneIcon className="labelicon" />
                             <span className="labeltext">Trash</span></Button>
                     </Drawer>

@@ -11,6 +11,7 @@ import {deleteNote,archiveNote} from '../services/noteservice';
 import Color from '../pages/color';
 import Reminder from '../pages/addreminder';
 import Collaborator from './collaborator';
+import AddLabel from '../pages/addlabel'
 
 const options = [
     'None',
@@ -68,7 +69,7 @@ export default class properties extends Component {
     };
 
     handleAddLabel = () => {
-
+//<AddLabel/>
     }
     
     render() {

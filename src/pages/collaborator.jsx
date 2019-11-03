@@ -37,7 +37,6 @@ export default class Collaborator extends Component {
     }
     componentWillMount = () => {
         console.log('inside willmount');
-        
         this.getEmails();
     }
     handleCollabChange = (e) => {

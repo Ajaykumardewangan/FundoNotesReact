@@ -12,7 +12,9 @@ import Property from './pages/properties';
 import CreateNote from './pages/createnote';
 import Color from './pages/color';
 import Remainder from './pages/addreminder';
-import Collaborator from './pages/collaborator'
+import Collaborator from './pages/collaborator';
+import AddLabel from './pages/addlabel';
+import EditLabel from './pages/editlabel';
  import './App.css';
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
           <Route path='/color' component={Color} />
           <Route path='/reminder' component={Remainder} />
           <Route path='/collaborator' component={Collaborator} />
+          <Route path='/addlabel' component={AddLabel} />
+          <Route path='/editlabel' component={EditLabel} />
         </Switch>
       </Router>
     </div>
