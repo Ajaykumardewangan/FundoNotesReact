@@ -84,11 +84,9 @@ export default class Remainder extends Component {
         console.log('noteList : ',this.state.noteId);
         
       addReminder(this.state.noteId,data).then((res) => {
-            // console.log("response---- in reminder", res);
-       this.props.reminderPropsToGetNotes(true)
-            this.props.reminderPropsToGetReminder(true)
-           
-            // this.props.propsToCreateNote(this.state.selectedDate)
+            console.log("response---- in reminder", res);
+            // this.props.reminderPropsToGetNotes(true)
+            // this.props.reminderPropsToGetReminder(true)
         }).catch((err) => {
             console.log('err in  remindercomp', err);
         })

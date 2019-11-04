@@ -11,3 +11,6 @@ export  function getLables(token) {
     return axios.get(baseURL+'/label/get_labels',{headers: {'token' :  token}}
     )
 }
+export function login1(){
+    return ;
+}

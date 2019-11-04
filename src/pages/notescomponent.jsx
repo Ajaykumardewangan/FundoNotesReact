@@ -1,11 +1,11 @@
 import React, { Component } from "react"
 import PrimarySearchAppBar from "./header";
 
-export default class ArchiveComponent extends Component {
+export default class NotesComponent extends Component {
     constructor(props){
         super();
         this.state = {
-            titleNotes: 'get_archivednotes',  
+            titleNotes: 'get_notes',  
         }
     }
 

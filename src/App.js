@@ -16,6 +16,10 @@ import Collaborator from './pages/collaborator';
 import AddLabel from './pages/addlabel';
 import EditLabel from './pages/editlabel';
  import './App.css';
+import ReminderComponent from './pages/remindercomponent';
+import NotesComponent from './pages/notescomponent';
+import TrashComponent from './pages/trashcomponent';
+import ArchiveComponent from './pages/archivecomponent';
 
 function App() {
   return (
@@ -37,6 +41,10 @@ function App() {
           <Route path='/collaborator' component={Collaborator} />
           <Route path='/addlabel' component={AddLabel} />
           <Route path='/editlabel' component={EditLabel} />
+          <Route path='/getremindernotes' component={ReminderComponent} />
+          <Route path='/notes' component={NotesComponent}/>
+          <Route path='/gettrash' component={TrashComponent}/>
+          <Route path='/getarchive' component={ArchiveComponent}/>
         </Switch>
       </Router>
     </div>

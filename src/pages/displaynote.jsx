@@ -7,10 +7,12 @@ import Properties from '../pages/properties';
 import {getNotes} from '../services/noteservice';
 import FormDialog from '../pages/notedialogbox'
 import { directive } from '@babel/types';
+import CreateNote from '../pages/createnote';
 export default class DisplayNote extends Component {
     constructor(props){
 super(props);
 this.state = {
+  titleNotes:props.name,
   allNotes:[],
   noteTitle:'',
   description:'',
@@ -18,7 +20,16 @@ this.state = {
     }
 
     componentDidMount() {
-      getNotes(localStorage.getItem('token')).then(res => {
+      let fetchedNoteName=null;
+      console.log('title notes in did mount : ',this.titleNotes);
+      if(this.titleNotes === undefined)
+      {
+        fetchedNoteName="get_notes";
+      }
+      else{
+        fetchedNoteName=this.titleNotes;
+      }
+      getNotes(localStorage.getItem('token'),fetchedNoteName).then(res => {
          console.log('all notes are' + res.data);
          this.setState({
           doescheckfield:false,
@@ -107,6 +118,9 @@ openDialog =()=>{
   })
   return (
        <div>
+         <div>
+          <CreateNote/>
+        </div>
         <div className="note-div">
           {displayAllNotes}
         </div>

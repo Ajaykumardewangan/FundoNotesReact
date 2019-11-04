@@ -5,9 +5,10 @@ const config={
  headers : {
     'Content-Type': 'application/json'
 }}
-export  function getNotes(token) {
+export  function getNotes(token,fetchedNoteName) {
     // console.log('user123' ,localStorage.getItem('token'));
-    return axios.get(baseURL+'/notes/get_notes',{headers: {'token' :  token}}
+    console.log('fetched note title name : ',fetchedNoteName);
+    return axios.get(baseURL+'/notes/'+fetchedNoteName,{headers: {'token' :  token}}
     )
 }
 
@@ -71,3 +72,5 @@ export function searchUserList(){
 export function getCollaboratedUser(noteId) {
     return axios.get(baseURL+'/notes/getCollaboratedUser?noteId='+noteId,{headers: {'token' :  localStorage.getItem('token')}});
 }
+
+

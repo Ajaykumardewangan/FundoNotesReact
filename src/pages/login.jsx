@@ -44,9 +44,7 @@ export default class Login extends React.Component {
                 localStorage.setItem('token', res.data.msg)
                 localStorage.setItem('email',this.state.email);
                 console.log('token hai : ', res.data.msg);
-                
-                this.props.history.push('/header')
-                
+                this.props.history.push('/header')  
             }).catch(err=>{
                 console.log("Error after hitting login api  ",err);
             })
@@ -71,7 +69,7 @@ export default class Login extends React.Component {
                         variant="outlined"
                         value={this.state.email}
                         onChange={this.handleemail}
-                    /> <br /> <br /> <br />
+                    /> <br/> <br/> <br/>
                     <TextField
                         id="password"
                         placeholder="password"

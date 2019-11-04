@@ -5,35 +5,27 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
-
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-
 import ClearIcon from '@material-ui/icons/Clear';
-
 import LoopIcon from '@material-ui/icons/Loop';
 import ViewAgendaIcon from '@material-ui/icons/ViewAgenda';
-
 import SettingsIcon from '@material-ui/icons/Settings';
-import AppsIcon from '@material-ui/icons/Apps';
-
 import { Grid } from '@material-ui/core';
 import Sidenav from '../pages/sidenav'
 import DisplayNote from '../pages/displaynote';
-import CreateNote from '../pages/createnote';
-
 
 export default class PrimarySearchAppBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      titleNotes:props.name,
       isOpen: false
     }
   }
   toggleDrawer = async () => {
     await this.setState({
       isOpen: !this.state.isOpen
-
     });
     console.log(this.state.isOpen);
   };
@@ -41,15 +33,14 @@ export default class PrimarySearchAppBar extends Component {
   render() {
 
     return (
-      <div  >
-
+      <div>
         <AppBar position="static" >
-          <Toolbar style={{ backgroundColor: "white" }} >
+          <Toolbar style={{ backgroundColor: "white" }}>
             <div>
               <IconButton edge="start" aria-label="menu" onClick={this.toggleDrawer}>
                 <MenuIcon />
               </IconButton>
-              <Sidenav menuSelect={this.state.isOpen} />
+              <Sidenav menuSelect={this.state.isOpen} history={this.props.history} />
             </div>
             <div>
               <img className="keep-img" alt='not found' src={require('../assets/images/keep.png')} />
@@ -70,7 +61,7 @@ export default class PrimarySearchAppBar extends Component {
               </IconButton>
             </div>
 
-            <div />
+            <div/>
             <div style={{ display: 'flex', color: '#808080' }}className="icons-div">
               <IconButton color="inherit">
                 <LoopIcon />
@@ -90,11 +81,8 @@ export default class PrimarySearchAppBar extends Component {
             </div>
           </Toolbar>
         </AppBar>
-        <div>
-          <CreateNote/>
-        </div>
-        <div>
-          <DisplayNote/>
+           <div>
+          <DisplayNote name={this.state.titleNotes} />
           </div>
       </div>
     );
