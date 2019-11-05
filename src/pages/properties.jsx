@@ -7,7 +7,7 @@ import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import Menu from '@material-ui/core/Menu';
-import {deleteNote,archiveNote} from '../services/noteservice';
+import {trashNotes,archiveNote} from '../services/noteservice';
 import Color from '../pages/color';
 import Reminder from '../pages/addreminder';
 import Collaborator from './collaborator';
@@ -41,7 +41,7 @@ export default class properties extends Component {
     handleDeleteNote = () => {
         console.log('inside close method of proprties: ');
         console.log(this.state1.noteId);
-        deleteNote(localStorage.getItem('token'),this.state1.noteId).then(res=>{
+        trashNotes(localStorage.getItem('token'),this.state1.noteId).then(res=>{
             console.log("Response after hitting login api is ",res);
             // this.props.history.push('/login')
             
@@ -136,7 +136,6 @@ export default class properties extends Component {
             <div>
             </div>
         </div>   
-          
         )
     }
 }

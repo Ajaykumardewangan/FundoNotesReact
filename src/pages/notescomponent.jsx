@@ -12,7 +12,7 @@ export default class NotesComponent extends Component {
     render() {
         return(
            <div>
-               <PrimarySearchAppBar name={this.state.titleNotes}></PrimarySearchAppBar>
+               <PrimarySearchAppBar name={this.state.titleNotes} history={this.props.history}></PrimarySearchAppBar>
            </div>
         )
         }

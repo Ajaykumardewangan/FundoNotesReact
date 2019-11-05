@@ -21,13 +21,13 @@ this.state = {
 
     componentDidMount() {
       let fetchedNoteName=null;
-      console.log('title notes in did mount : ',this.titleNotes);
-      if(this.titleNotes === undefined)
+      console.log('title notes in did mount : ',this.state.titleNotes);
+      if(this.state.titleNotes === undefined)
       {
         fetchedNoteName="get_notes";
       }
       else{
-        fetchedNoteName=this.titleNotes;
+        fetchedNoteName=this.state.titleNotes;
       }
       getNotes(localStorage.getItem('token'),fetchedNoteName).then(res => {
          console.log('all notes are' + res.data);
@@ -37,8 +37,7 @@ this.state = {
           open:'false',
           setOpen:'false'
          });
-     }).
-         catch((err) => {
+     }).catch((err) => {
              console.log('error ' + err);
          })
  };
@@ -49,10 +48,18 @@ this.state = {
     })
 }
 
-handleDescription = (event) => {
+handleDescription = (event) => { 
     this.setState({
         description: event.target.value
     })
+}
+
+handleProperties = (object) => {
+  if(this.state.titleNotes === 'get_trash' || ''){
+
+  }else{
+  return <Properties id={object.id}/>
+  }
 }
 openDialog =()=>{
     // <FormDialog/>

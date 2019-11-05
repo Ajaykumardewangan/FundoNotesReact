@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import { Tooltip, Button,createMuiTheme } from '@material-ui/core';
 import Popper from '@material-ui/core/Popper';
-
 import Paper from '@material-ui/core/Paper';
 import AddAlertOutlinedIcon from '@material-ui/icons/AddAlertOutlined';
 import { ThemeProvider } from "@material-ui/styles";
 import {addReminder} from '../services/noteservice'
-
 import DateFnsUtils from "@date-io/date-fns";
 import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 const theme = createMuiTheme({
