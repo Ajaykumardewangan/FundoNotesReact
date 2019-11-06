@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 import {getLables} from '../services/labelservice'
 import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 // import { hashHistory } from 'react-router;'
-import { HashRouter } from 'react-router-dom';
+//import { HashRouter } from 'react-router-dom';
 
 const theme = createMuiTheme({
     overrides: {
@@ -49,9 +49,11 @@ export default class Sidenav extends Component {
         this.props.history.push('/notes');  
     }
 
-    handleGetNotesOfLabel= () =>{
-        this.props.history.push('/');
+    handleGetNotesOfLabel= (labelId) =>{
+        console.log('inside handle getlabelnotes : ',labelId);
+        this.props.history.push('/getlabelnotes/:'+labelId);    
     }
+
     handleGetReminderNotes= () =>{
        this.props.history.push('/getremindernotes');
     }
@@ -65,9 +67,9 @@ export default class Sidenav extends Component {
     render() {
         let displayallLables = this.state.allLabels.map((object,index) => {
             return (
-                <Button onClick={this.handleGetNotesOfLabel}>
+                <Button onClick={()=>this.handleGetNotesOfLabel(object.id)}>
                     <LabelOutlinedIcon  />
-                    <span className="labeltext">{object.labelName}</span>
+                    <span className="labeltext">{object.labelName},{object.id}</span>
                 </Button>
             )
         })

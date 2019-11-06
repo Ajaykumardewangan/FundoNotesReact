@@ -20,6 +20,7 @@ import ReminderComponent from './pages/remindercomponent';
 import NotesComponent from './pages/notescomponent';
 import TrashComponent from './pages/trashcomponent';
 import ArchiveComponent from './pages/archivecomponent';
+import LabelNoteComponent from './pages/labelnotecomponent';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path='/notes' component={NotesComponent}/>
           <Route path='/gettrash' component={TrashComponent}/>
           <Route path='/getarchive' component={ArchiveComponent}/>
+          <Route path='/getlabelnotes/:labelId' component={LabelNoteComponent}/>
         </Switch>
       </Router>
     </div>

@@ -4,10 +4,12 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { TextareaAutosize } from '@material-ui/core';
 import Properties from '../pages/properties';
-import {getNotes} from '../services/noteservice';
+import {getNotes, getNotesOnLabel} from '../services/noteservice';
 import FormDialog from '../pages/notedialogbox'
 import { directive } from '@babel/types';
 import CreateNote from '../pages/createnote';
+import Createnote from '../pages/createnote';
+import TrashProperties from './trashproperties';
 export default class DisplayNote extends Component {
     constructor(props){
 super(props);
@@ -26,7 +28,11 @@ this.state = {
       {
         fetchedNoteName="get_notes";
       }
-      else{
+      else if(this.state.titleNotes === 'getNotesOnLabel') {
+        this.getNotesOnLabel(this.props.labelId);
+        return;
+      }
+      else {
         fetchedNoteName=this.state.titleNotes;
       }
       getNotes(localStorage.getItem('token'),fetchedNoteName).then(res => {
@@ -42,6 +48,21 @@ this.state = {
          })
  };
 
+ getNotesOnLabel = (labelId) => {
+   console.log('inside dispalaynotes in getnotesonlabelmethod : ',labelId);
+  getNotesOnLabel(labelId).then(res => {
+    console.log('all notes of labelonNotes : ' + res.data);
+    this.setState({
+     doescheckfield:false,
+     allNotes: res.data,
+     open:'false',
+     setOpen:'false'
+    });
+}).catch((err) => {
+        console.log('error ' + err);
+    })
+ }
+
  handleTitle = (event) => {
     this.setState({
         noteTitle: event.target.value
@@ -55,12 +76,19 @@ handleDescription = (event) => {
 }
 
 handleProperties = (object) => {
-  if(this.state.titleNotes === 'get_trash' || ''){
-
+  if(this.state.titleNotes === 'get_trash'){
+    return <TrashProperties id={object.id}></TrashProperties>
   }else{
   return <Properties id={object.id}/>
   }
 }
+handleCreateNotes = () => {
+  if(this.state.titleNotes === 'get_trash' || this.state.titleNotes === 'get_archivednotes'){
+    
+  }else{
+    return  <Createnote/>}
+}
+
 openDialog =()=>{
     // <FormDialog/>
   //   <div>
@@ -115,7 +143,7 @@ openDialog =()=>{
             </div>
               <br/>
               <div>
-              <Properties id={object.id}/>
+                {this.handleProperties(object)}
               </div>
               </CardContent>
               </div>  
@@ -125,8 +153,8 @@ openDialog =()=>{
   })
   return (
        <div>
-         <div>
-          <CreateNote/>
+        <div>
+           {this.handleCreateNotes()}
         </div>
         <div className="note-div">
           {displayAllNotes}

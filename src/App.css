@@ -288,3 +288,10 @@ margin-top: 4%;
 .addLAbelCard{
   width:300px;
 }
+
+/* -------------------------------------trashnoteproperties--------------------------- */
+
+.trash-property {
+  display: flex;
+  flex-direction: row;  
+}

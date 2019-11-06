@@ -17,8 +17,8 @@ export  function createNotes(token,data) {
     return axios.post(baseURL+'/notes/create_note',data,{headers: {'token' :  token}}
     )
 }
-export  function deleteNote(token,noteId) {
-    return axios.delete(baseURL+'/notes/delete_note?noteId='+noteId,{headers: {'token' :  token}}
+export  function deleteNote(noteId) {
+    return axios.delete(baseURL+'/notes/delete_note?noteId='+noteId,{headers: {'token' :localStorage.getItem('token')  }}
     )
 }
 
@@ -28,18 +28,16 @@ export  function trashNotes(token,noteId) {
 }
 
 export  function archiveNote(token,noteId) {
-    // console.log('user123' ,localStorage.getItem('token'));
-    // console.log('archive note :  ',noteId);
     return axios.put(baseURL+'/notes/archive?noteId='+noteId,null,{headers: {'token' :  token}}
     )
 }
 
+export  function getNotesOnLabel(labelId) {
+    return axios.get(baseURL+'/notes/getNotesOnLabel?labelId='+labelId,{headers: {'token' : localStorage.getItem('token')}}
+    )
+}
 
 export  function changeColor(color,token,noteId) {
-    // console.log('user123' ,localStorage.getItem('token'));
-    // console.log(' change color :  ',noteId);
-    // console.log('color: ',color);
-    
     return axios.put(baseURL+'/notes/change-color/'+color+'?noteId='+noteId,null,{headers: {'token' :  token}}
     )
 }

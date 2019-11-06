@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import PrimarySearchAppBar from "./header";
 
+
 export default class ReminderComponent extends Component {
     constructor(props){
         super();
@@ -8,7 +9,6 @@ export default class ReminderComponent extends Component {
             titleNotes: 'get_reminder',  
         }
     }
-
     render() {
         return(
            <div>

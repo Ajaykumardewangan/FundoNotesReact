@@ -124,7 +124,7 @@ export default class properties extends Component {
                     }}
                 >
                         <div>
-                        <MenuItem  >
+                        <MenuItem >
                         <button onClick={this.handleDeleteNote}>  delete note</button>
                         </MenuItem>
                         <MenuItem >
