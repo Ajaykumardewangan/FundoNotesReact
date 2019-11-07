@@ -10,6 +10,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import ClearIcon from '@material-ui/icons/Clear';
 import LoopIcon from '@material-ui/icons/Loop';
 import ViewAgendaIcon from '@material-ui/icons/ViewAgenda';
+import ViewColumnIcon from '@material-ui/icons/ViewColumn';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { Grid } from '@material-ui/core';
 import Sidenav from '../pages/sidenav'
@@ -20,7 +21,8 @@ export default class PrimarySearchAppBar extends Component {
     super(props);
     this.state = {
       titleNotes:props.name,
-      isOpen: false
+      isOpen: false,
+      view:true,
     }
   }
   toggleDrawer = async () => {
@@ -29,12 +31,19 @@ export default class PrimarySearchAppBar extends Component {
     });
     console.log(this.state.isOpen);
   };
-    
+  handleRefresh = () => {
+    window.location.reload();
+  }
+  handleView = () => {
+    this.setState({
+        view: !this.state.view
+    })
+   
+}
   render() {
-
     return (
       <div>
-        <AppBar position="static" >
+        <AppBar position="static">
           <Toolbar style={{ backgroundColor: "white" }}>
             <div>
               <IconButton edge="start" aria-label="menu" onClick={this.toggleDrawer}>
@@ -48,7 +57,7 @@ export default class PrimarySearchAppBar extends Component {
             <Typography variant="h6" noWrap>
               <span style={{ color: '#808080' }}>Fundo</span> Fundo
               </Typography>
-            <div className="search" >
+            <div className="search">
               <div >
                 <SearchIcon />
               </div>
@@ -63,11 +72,11 @@ export default class PrimarySearchAppBar extends Component {
 
             <div/>
             <div style={{ display: 'flex', color: '#808080' }}className="icons-div">
-              <IconButton color="inherit">
+              <IconButton color="inherit"  onClick={this.handleRefresh}>
                 <LoopIcon />
               </IconButton>
-              <IconButton color="inherit">
-                <ViewAgendaIcon />
+              <IconButton color="inherit" onClick={this.handleView}>
+              {this.state.view ? <ViewAgendaIcon /> : <ViewColumnIcon />}
               </IconButton>
               <IconButton color="inherit">
                 <SettingsIcon />
@@ -82,7 +91,8 @@ export default class PrimarySearchAppBar extends Component {
           </Toolbar>
         </AppBar>
            <div>
-          <DisplayNote name={this.state.titleNotes} labelId={this.props.labelId} />
+             <p>{this.props.labelId}</p>
+          <DisplayNote name={this.state.titleNotes} labelId={this.props.labelId} viewProps={this.state.view} />
           </div>
       </div>
     );

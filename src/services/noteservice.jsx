@@ -73,5 +73,10 @@ export function searchUserList(){
 export function getCollaboratedUser(noteId) {
     return axios.get(baseURL+'/notes/getCollaboratedUser?noteId='+noteId,{headers: {'token' :  localStorage.getItem('token')}});
 }
+export function updateNotes(noteId,data) {
+    console.log('under update noteId ',noteId);
+    console.log('under update noteData ',data);
+    return axios.put(baseURL+'/notes/updatenotereact?id='+noteId,data,{headers: {'token' :  localStorage.getItem('token')}});
+    }
 
 

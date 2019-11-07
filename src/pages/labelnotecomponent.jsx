@@ -18,8 +18,6 @@ export default class LabelNoteComponent extends Component {
         }
     }
 
-    
-
     render() {
         return(
            <div>

@@ -111,6 +111,17 @@ vertical-align: middle;
   height: auto;
   width:'50vw';
 }
+.display-card {
+  margin: 10px;
+  width: 300px;
+  height: auto;
+}
+.list-view{
+  margin: 12px;
+  width:500px;
+  height: auto;
+  
+}
 .inputDisplatNote{
   border:'none';
   outline:'none';
