@@ -4,7 +4,7 @@ import PrimarySearchAppBar from "./header";
 
 export default class LabelNoteComponent extends Component {
 
-    componentDidMount() {
+    componentWillMount() {
          this.state.labelId =  this.props.match.params
          console.log("inside labelNotecom compdidm :",this.state.labelId.labelId)
          // Extracted productId from the Route params.

@@ -91,7 +91,6 @@ export default class PrimarySearchAppBar extends Component {
           </Toolbar>
         </AppBar>
            <div>
-             <p>{this.props.labelId}</p>
           <DisplayNote name={this.state.titleNotes} labelId={this.props.labelId} viewProps={this.state.view} />
           </div>
       </div>

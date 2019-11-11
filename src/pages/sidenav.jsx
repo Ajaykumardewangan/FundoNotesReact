@@ -51,7 +51,7 @@ export default class Sidenav extends Component {
 
     handleGetNotesOfLabel= (labelId) =>{
         console.log('inside handle getlabelnotes : ',labelId);
-        this.props.history.push('/getlabelnotes/:'+labelId);    
+        this.props.history.push('/getlabelnotes/'+labelId);    
     }
 
     handleGetReminderNotes= () =>{

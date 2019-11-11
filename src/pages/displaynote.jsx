@@ -21,7 +21,7 @@ this.state = {
 }
     }
 
-    componentDidMount() {
+    componentWillMount() {
       let fetchedNoteName=null;
       console.log('title notes in did mount : ',this.state.titleNotes);
       if(this.state.titleNotes === undefined)

@@ -33,7 +33,10 @@ export  function archiveNote(token,noteId) {
 }
 
 export  function getNotesOnLabel(labelId) {
-    return axios.get(baseURL+'/notes/getNotesOnLabel?labelId='+labelId,{headers: {'token' : localStorage.getItem('token')}}
+    console.log('got label id form url : ',labelId);
+    const id = parseInt(labelId);
+    console.log('id in getnotesonlabel : ',id);
+    return axios.get(baseURL+'/notes/getNotesOnLabel?labelId='+id,{headers: {'token' : localStorage.getItem('token')}}
     )
 }
 
