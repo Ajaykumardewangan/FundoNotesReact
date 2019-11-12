@@ -4,12 +4,16 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { TextareaAutosize } from '@material-ui/core';
 import Properties from '../pages/properties';
-import {getNotes, getNotesOnLabel} from '../services/noteservice';
+import {getNotes, getNotesOnLabel,updateNotes} from '../services/noteservice';
 import FormDialog from '../pages/notedialogbox'
 import { directive } from '@babel/types';
 import CreateNote from '../pages/createnote';
 import Createnote from '../pages/createnote';
 import TrashProperties from './trashproperties';
+import Dialog from '@material-ui/core/Dialog';
+ import DialogActions from '@material-ui/core/DialogActions';
+ import DialogContent from '@material-ui/core/DialogContent';
+ import { InputBase } from '@material-ui/core';
 export default class DisplayNote extends Component {
     constructor(props){
 super(props);
@@ -18,6 +22,7 @@ this.state = {
   allNotes:[],
   noteTitle:'',
   description:'',
+  doescheckfield:false,
 }
     }
 
@@ -89,17 +94,50 @@ handleCreateNotes = () => {
     return  <Createnote/>}
 }
 
-openDialog =()=>{
-   
-};
+ openDialog =(object)=>{
+   console.log(object.noteId)
+   this.setState({
+     doescheckfield:!this.state.doescheckfield,
+     noteTitle:object.noteTitle,
+     description:object.description
+    })
+
+ };
+
+ closeDialog=()=>{
+   this.setState({
+     doescheckfield:!this.state.doescheckfield,
+    })
+ }
+
+  handleSubmit = (object) => {
+      //  let data={
+      //      "title":this.state.noteTitle,
+      //     "description": this.state.description,
+      //  }
+       
+       object.title = this.state.noteTitle;
+       object.description = this.state.description;
+
+       console.log('title  '+this.state.noteTitle);
+       console.log('desc  '+this.state.description);
+       updateNotes(object).then(res=>{
+         this.getAllNotes();
+           console.log("Response after hitting login api is ",res);
+       }).catch(err=>{
+           console.log("Error after hitting login api  ",err);      
+       })
+       this.setState({
+        doescheckfield:!this.state.doescheckfield
+       })
+      }
 
   render(){
-    
       const cardView = this.props.viewProps ? "display-card" : "list-view"
     let displayAllNotes = this.state.allNotes.map((object,index) => {
       return (
           <div>
-          <Card className={cardView} onClick={this.openDialog} style={{backgroundColor:object.color}}> 
+          <Card className={cardView} onClick={()=>this.openDialog(object)} style={{backgroundColor:object.color}}> 
            <div>
            <CardContent>
            <div>
@@ -117,7 +155,33 @@ openDialog =()=>{
               </CardContent>
               </div>  
               </Card>
-              </div>
+
+          <Dialog open={this.state.doescheckfield} aria-labelledby="form-dialog-title" >
+          <DialogContent style={{backgroundColor:object.color}}>
+          <div>
+           <input style={{border:'none',outline:'none',width:'350px',backgroundColor:object.color}} type="text" 
+              value={this.state.noteTitle} onChange={this.handleTitle} name='title'/>
+           </div>
+            <br/>
+          <div>
+              <InputBase multiline style={{width:'350px',marginTop:'10px',border:'none', outline:'none', backgroundColor:object.color}} 
+            value={this.state.description} onChange={this.handleDescription} name='description'/>
+           </div>
+            <br/>
+         </DialogContent>
+         <DialogActions style={{backgroundColor:object.color}}>
+          
+           <div>
+          <Properties id={object.id}/>
+           </div>
+          <div>
+          <Button  color="primary" onClick={()=>this.handleSubmit(object)}>
+            Close
+           </Button>
+           </div>
+        </DialogActions>
+      </Dialog>
+     </div>
       )
   })
   return (
