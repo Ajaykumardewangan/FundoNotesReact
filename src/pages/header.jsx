@@ -23,6 +23,7 @@ export default class PrimarySearchAppBar extends Component {
       titleNotes:props.name,
       isOpen: false,
       view:true,
+      searchData:''
     }
   }
   toggleDrawer = async () => {
@@ -31,6 +32,14 @@ export default class PrimarySearchAppBar extends Component {
     });
     console.log(this.state.isOpen);
   };
+   
+  searchNotes = (event) => {
+    this.setState({
+      searchData: event.target.value
+  })
+  
+  }
+
   handleRefresh = () => {
     window.location.reload();
   }
@@ -38,7 +47,6 @@ export default class PrimarySearchAppBar extends Component {
     this.setState({
         view: !this.state.view
     })
-   
 }
   render() {
     return (
@@ -49,7 +57,7 @@ export default class PrimarySearchAppBar extends Component {
               <IconButton edge="start" aria-label="menu" onClick={this.toggleDrawer}>
                 <MenuIcon />
               </IconButton>
-              <Sidenav menuSelect={this.state.isOpen} history={this.props.history} />
+              <Sidenav menuSelect={this.state.isOpen} history={this.props.history}/>
             </div>
             <div>
               <img className="keep-img" alt='not found' src={require('../assets/images/keep.png')} />
@@ -63,10 +71,12 @@ export default class PrimarySearchAppBar extends Component {
               </div>
               <InputBase className="searchbar"
                 placeholder="Search…"
+                value={this.state.searchData}
+                onKeyUp = {this.searchNotes}
                 inputProps={{ 'aria-label': 'search' }}
               />
-              <IconButton >
-                <ClearIcon />
+              <IconButton>
+                <ClearIcon/>
               </IconButton>
             </div>
 
@@ -79,7 +89,7 @@ export default class PrimarySearchAppBar extends Component {
               {this.state.view ? <ViewAgendaIcon /> : <ViewColumnIcon />}
               </IconButton>
               <IconButton color="inherit">
-                <SettingsIcon />
+                <SettingsIcon/>
               </IconButton>
             </div>
             <div style={{ display: 'flex', color: '#808080' }} className="profile-div">
@@ -91,7 +101,7 @@ export default class PrimarySearchAppBar extends Component {
           </Toolbar>
         </AppBar>
            <div>
-          <DisplayNote name={this.state.titleNotes} labelId={this.props.labelId} viewProps={this.state.view} />
+             <DisplayNote name={this.state.titleNotes} labelId={this.props.labelId} viewProps={this.state.view}/>
           </div>
       </div>
     );

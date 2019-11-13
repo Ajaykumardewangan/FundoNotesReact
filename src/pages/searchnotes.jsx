@@ -22,7 +22,7 @@ this.state = {
   doescheckfield:false,
   noteId:'',
   updateNoteId:'',
-}
+ }
 }
 
     componentWillMount() {
@@ -86,12 +86,6 @@ handleProperties = (object) => {
   return <Properties id={object.id}/>
   }
 }
-handleCreateNotes = () => {
-  if(this.state.titleNotes === 'get_trash' || this.state.titleNotes === 'get_archivednotes'){
-    
-  }else{
-    return  <Createnote/>}
-}
 
  openDialog =(object)=>{
    console.log(object.noteId)
@@ -100,7 +94,6 @@ handleCreateNotes = () => {
      updateNoteId:object.id,
      noteTitle:object.noteTitle,
      description:object.description,
-    
     })
  };
 
@@ -109,29 +102,6 @@ handleCreateNotes = () => {
      doescheckfield:!this.state.doescheckfield,
     })
  }
-
-  // handleSubmit = (object,noteId) => {
-  //     //  let data={
-  //     //      "title":this.state.noteTitle,
-  //     //     "description": this.state.description,
-  //     //  }
-       
-  //      object.title = this.state.noteTitle;
-  //      object.description = this.state.description;
-
-  //      console.log('title  '+this.state.noteTitle);
-  //      console.log('desc  '+this.state.description);
-  //      console.log('note Id : ',noteId);
-  //      updateNotes(object).then(res=>{
-  //       // this.getAllNotes();
-  //          console.log("Response after hitting updatenote api is ",res);
-  //      }).catch(err=>{
-  //          console.log("Error after hitting updateNote api  ",err);      
-  //      })
-  //      this.setState({
-  //       doescheckfield:!this.state.doescheckfield
-  //      })
-  //     }
 
   handleSubmit = () => {
   this.setState({
@@ -145,10 +115,10 @@ handleCreateNotes = () => {
         console.log('display data',data);
         console.log('display noteId',this.state.updateNoteId);
 
-        updateNotes(this.state.updateNoteId,data).then(res=>{
+        updateNotes(this.state.updateNoteId,data).then(res=> {
             console.log("Response after hitting login api is ",res);
         
-        }).catch(err=>{
+        }).catch(err=> {
             console.log("Error after hitting login api  ",err);
         })
   }
@@ -164,7 +134,7 @@ handleCreateNotes = () => {
            <div>
               <input style={{border:'none',outline:'none',width:'250px',
               backgroundColor:object.color}} type="text" value={object.noteTitle} 
-              onChange={this.handleTitle} />
+              onChange={this.handleTitle}/>
            </div>
               <br/>
             <div>
@@ -173,7 +143,7 @@ handleCreateNotes = () => {
             </div>
               <br/>
               <div>
-                {this.handleProperties(object)}
+              <Properties id={object.id}/>
               </div>
               </CardContent>
               </div>  
@@ -208,9 +178,6 @@ handleCreateNotes = () => {
   })
   return (
        <div>
-        <div>
-           {this.handleCreateNotes()}
-        </div>
         <div className="note-div">
           {displayAllNotes}
         </div>
