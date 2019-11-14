@@ -4,14 +4,13 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { TextareaAutosize } from '@material-ui/core';
 import Properties from '../pages/properties';
-import {getNotes, getNotesOnLabel,updateNotes} from '../services/noteservice';
-import Createnote from '../pages/createnote';
-import TrashProperties from './trashproperties';
+import {updateNotes, searchNotesByElastic} from '../services/noteservice';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import { InputBase } from '@material-ui/core';
-export default class DisplayNote extends Component {
+
+export default class SearchNotes extends Component {
     constructor(props){
 super(props);
 this.state = {
@@ -25,37 +24,10 @@ this.state = {
  }
 }
 
-    componentWillMount() {
-      let fetchedNoteName=null;
-      console.log('title notes in did mount : ',this.state.titleNotes);
-      if(this.state.titleNotes === undefined)
-      {
-        fetchedNoteName="get_notes";
-      }
-      else if(this.state.titleNotes === 'getNotesOnLabel') {
-        this.getNotesOnLabel(this.props.labelId);
-        return;
-      }
-      else {
-        fetchedNoteName=this.state.titleNotes;
-      }
-      getNotes(localStorage.getItem('token'),fetchedNoteName).then(res => {
-         console.log('all notes are' + res.data);
-         this.setState({
-          doescheckfield:false,
-          allNotes: res.data,
-          open:'false',
-          setOpen:'false'
-         });
-     }).catch((err) => {
-             console.log('error ' + err);
-         })
- };
-
- getNotesOnLabel = (labelId) => {
-   console.log('inside dispalaynotes in getnotesonlabelmethod : ',labelId);
-  getNotesOnLabel(labelId).then(res => {
-    console.log('all notes of labelonNotes : ' + res.data);
+componentWillMount() {
+  console.log('searched data that passed from header : ',this.props.searchdata);
+  searchNotesByElastic(this.props.searchdata).then(res => {
+    console.log('all notes are' + res.data);
     this.setState({
      doescheckfield:false,
      allNotes: res.data,
@@ -64,8 +36,8 @@ this.state = {
     });
 }).catch((err) => {
         console.log('error ' + err);
-    })
- }
+    })  
+}
 
  handleTitle = (event) => {
     this.setState({
@@ -77,14 +49,6 @@ handleDescription = (event) => {
     this.setState({
         description: event.target.value
     })
-}
-
-handleProperties = (object) => {
-  if(this.state.titleNotes === 'get_trash'){
-    return <TrashProperties id={object.id}></TrashProperties>
-  }else{
-  return <Properties id={object.id}/>
-  }
 }
 
  openDialog =(object)=>{
@@ -165,17 +129,18 @@ handleProperties = (object) => {
             <DialogActions style={{backgroundColor:object.color}}>
           <div>
           <Properties id={object.id}/>
-           </div>
+          </div>
           <div>
-          <Button  color="primary" onClick={()=>this.handleSubmit()}>
-            Close
-           </Button>
-           </div>
+            <Button  color="primary" onClick={()=>this.handleSubmit()}>
+              Close
+            </Button>
+          </div>
         </DialogActions>
       </Dialog>
      </div>
       )
   })
+
   return (
        <div>
         <div className="note-div">

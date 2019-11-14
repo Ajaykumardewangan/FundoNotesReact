@@ -55,21 +55,26 @@ export  function changeColor(color,token,noteId) {
 return axios.put(baseURL+'/notes/reminder?noteId='+noteId+'&reminderDate='+datetime,null,{headers: {'token' :  localStorage.getItem('token')}}
         )
 }
+
 export function removeCollabNotes(noteId,email){
     return axios.delete(baseURL+'/notes/removecollaborator?noteId='+noteId+'&email='+email,{headers: {'token' :  localStorage.getItem('token')}})
 }
+
 export function addCollaboratorNotes(noteId,email){
     console.log('inside service  add cola :',noteId);
     console.log('email : ' ,email);
     return axios.post(baseURL+'/notes/addcollaborator?email='+email+'&noteId='+noteId,null,{headers: {'token' :  localStorage.getItem('token')}});
 }
+
 export function getUserEmails(){
     return;
 }
+
 export function getAllNotes(){
 
 }
-export function searchUserList(){
+
+export function searchUserList() {
     
 }
 
@@ -80,8 +85,12 @@ export function getCollaboratedUser(noteId) {
 export function updateNotes(noteId,data) {
     console.log('under update noteData ',noteId);
     console.log('under update noteDate ',data);
-    
-    return axios.put(baseURL+'/notes/updatenotereact?id='+noteId,data,{headers: {'token' :  localStorage.getItem('token')}});
-    }
+    return axios.put(baseURL+'/notes/updatenotereact?id='+noteId,data,{headers: {'token' :  localStorage.getItem('token')}});    
+}
+
+export function searchNotesByElastic(data) {
+    console.log('under elastic search noteDate ',data);
+    return axios.get(baseURL+'/notes/search_note?data='+data,{headers: {'token' :  localStorage.getItem('token')}});    
+}
 
 

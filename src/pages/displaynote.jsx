@@ -15,7 +15,6 @@ export default class DisplayNote extends Component {
     constructor(props){
 super(props);
 this.state = {
-  titleNotes:props.name,
   allNotes:[],
   noteTitle:'',
   description:'',
