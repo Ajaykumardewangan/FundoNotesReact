@@ -23,7 +23,6 @@ const theme = createMuiTheme({
                 width: "250px", 
                 height:'auto'
             }
-
         }
     }
 })
@@ -49,12 +48,12 @@ export default class Sidenav extends Component {
         this.props.history.push('/notes');  
     }
 
-    handleGetNotesOfLabel= (labelId) =>{
+    handleGetNotesOfLabel= (labelId) => {
         console.log('inside handle getlabelnotes : ',labelId);
         this.props.history.push('/getlabelnotes/'+labelId);    
     }
 
-    handleGetReminderNotes= () =>{
+    handleGetReminderNotes= () => {
        this.props.history.push('/getremindernotes');
     }
 
@@ -62,7 +61,7 @@ export default class Sidenav extends Component {
         this.props.history.push('/getarchive');  
     }
     
-    handleGetTrashedNotes= () =>{
+    handleGetTrashedNotes= () => {
         this.props.history.push('/gettrash'); 
     }
 

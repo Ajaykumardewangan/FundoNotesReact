@@ -126,7 +126,7 @@ handleDescription = (event) => {
            </div>
             <br/>
          </DialogContent>
-            <DialogActions style={{backgroundColor:object.color}}>
+          <DialogActions style={{backgroundColor:object.color}}>
           <div>
           <Properties id={object.id}/>
           </div>
@@ -144,6 +144,7 @@ handleDescription = (event) => {
   return (
        <div>
         <div className="note-div">
+          <h1>This is view content for search notes</h1>
           {displayAllNotes}
         </div>
      </div>

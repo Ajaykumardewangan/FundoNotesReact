@@ -13,10 +13,14 @@ export default class Login extends React.Component {
     }
     
     handleemail = (event) => {
+        if(event.target.value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)){
+            
+        }
         this.setState({
             email: event.target.value
         })
     }
+
     handlepassword = (event) => {
         this.setState({
             password: event.target.value
@@ -63,7 +67,7 @@ export default class Login extends React.Component {
                  <div> 
                     <h1>
                         Fundoo Login
-                </h1>
+                    </h1>
                     <TextField
                         id="email"
                         placeholder="email"

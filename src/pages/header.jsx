@@ -16,7 +16,6 @@ import { Grid } from '@material-ui/core';
 import Sidenav from '../pages/sidenav'
 import DisplayNote from '../pages/displaynote';
 import SearchNotes from './searchnotes';
-import { searchNotesByElastic } from '../services/noteservice';
 
 export default class PrimarySearchAppBar extends Component {
   constructor(props) {
@@ -37,16 +36,20 @@ export default class PrimarySearchAppBar extends Component {
     console.log(this.state.isOpen);
   };
    
-  searchNotes = (event) => {
-    console.log(event.target.value);
-    this.setState({
-      searchData: event.target.value
-    })
+  searchNotes = () => {
+    console.log("inside the search notes method  :--> ")
    this.setState({
     viewMode: 'searchView'
    })
    //this.elasticSearchNotes();
    this.changeViewForSearchNotes();
+  }
+
+  onChangeOfSearchNotes = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      searchData: event.target.value
+    })
   }
 
   //   elasticSearchNotes = () => {
@@ -65,7 +68,8 @@ export default class PrimarySearchAppBar extends Component {
 
   changeViewForSearchNotes = () => {
     console.log("inside the change View for search notes methods  : ",this.state.viewMode);
-    if(this.state.viewMode === 'searchView'){
+    if(this.state.viewMode === 'searchView') {
+      console.log(this.state.searchdata);
        return <SearchNotes searchdata={this.state.searchData} viewProps={this.state.view}/>
     }
     else{
@@ -107,14 +111,16 @@ export default class PrimarySearchAppBar extends Component {
             <Typography variant="h6" noWrap>
               <span style={{ color: '#808080' }}>Fundo</span> Fundo
             </Typography>
-            <div className="search" onClick={this.handleOnClickSearchbar}>
+            <div className="search"> 
+            {/* onClick={this.handleOnClickSearchbar} */}
               <div >
-                <SearchIcon />
+                <SearchIcon onClick={this.searchNotes}/>
+                {/* onClick={this.searchNotes} */}
               </div>
               <InputBase className="searchbar"
                 placeholder="Search…"
                 value={this.state.searchData}
-                onChange = {this.searchNotes}
+                onChange = {this.onChangeOfSearchNotes}
                 inputProps={{ 'aria-label': 'search' }}
               />
               <IconButton>
