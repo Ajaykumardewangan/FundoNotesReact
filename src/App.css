@@ -31,8 +31,18 @@
   display: flex;
   justify-content: center;
 }
-.submit-button {
-  margin-left: auto;
+
+.page_link {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#submit-button {
+  position: relative;
+  left: 140px;
+  margin-top: 15px;
 }
 .register{
   text-align: center;

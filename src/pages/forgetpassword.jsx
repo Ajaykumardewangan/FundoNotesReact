@@ -47,8 +47,8 @@ export default class ForgetPassword extends React.Component {
             <div className="login-container">
                 <Card className="login-card">
                  <div> 
-                    <h1>
-                     Password
+                <h1>
+                   <center>Forget Paswd</center>
                 </h1>
                 <div>
                     <TextField
@@ -59,13 +59,11 @@ export default class ForgetPassword extends React.Component {
                         onChange={this.handleEmail}
                     /> </div>
                     <div>
-                    <Button className = "submit-button" onClick={this.handleSubmit}>Login</Button>
+                    <Button id = "submit-button" variant="contained" color="primary" onClick={this.handleSubmit}>Login</Button>
                     </div>
-                    <div>
+                    <div className="page_link">
                     <a href="registration">Registration</a>
-                    </div>
-                    <div>
-                    <a href="login">login</a>
+                    <a href="login">Login</a>
                     </div>
                  </div>  
                 </Card>

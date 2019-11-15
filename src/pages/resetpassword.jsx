@@ -72,7 +72,7 @@ export default class ResetPassword extends React.Component {
                 <Card className="login-card">
                     <div>
                         <h1>
-                             Reset
+                            <center>Reset Password</center>
                         </h1>
                         <TextField
                             id="password"
@@ -88,8 +88,11 @@ export default class ResetPassword extends React.Component {
                             variant="outlined"
                             value={this.state.confirmPassword}
                             onChange={this.handleConfirmPassword}
-                        /> <br /> <br /> <br />
-                        <Button className="submit-button" onClick={this.handleSubmit}>Login</Button>
+                        />
+                        <div>
+                        <Button id = "submit-button" variant="contained" color="primary" onClick={this.handleSubmit}>Login</Button>
+                        </div>
+                        <br/>
                     </div>
                 </Card>
                 <Snackbar

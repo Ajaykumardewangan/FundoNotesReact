@@ -82,9 +82,9 @@ export default class Login extends React.Component {
                 <Card className="login-card">
                  <div> 
                      <div className="register">
-                    <h2>
+                    <h1>
                         Registration
-                   </h2>
+                   </h1>
                    </div>
                    <div>
                 <TextField
@@ -126,10 +126,11 @@ export default class Login extends React.Component {
                         variant="outlined"
                         value={this.state.password}
                         onChange={this.handlePassword}
-                    /></div><br/>
+                    /></div>
                     <div>
-                    <Button className = "submit-button" onClick={this.handleSubmit}>Register</Button>
+                    <Button id = "submit-button" variant="contained" color="primary" onClick={this.handleSubmit}>submit</Button>
                     </div>
+                    <br/>
                  </div>  
                 </Card>
                 <Snackbar

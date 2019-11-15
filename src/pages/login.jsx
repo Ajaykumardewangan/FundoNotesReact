@@ -81,8 +81,14 @@ export default class Login extends React.Component {
                         variant="outlined"
                         value={this.state.password}
                         onChange={this.handlepassword}
-                    /> <br /> <br /> <br />
-                    <Button className = "submit-button" onClick={this.handleSubmit}>Login</Button>
+                    />
+                    <div>
+                    <Button id = "submit-button" variant="contained" color="primary" onClick={this.handleSubmit}>Login</Button>
+                    </div>
+                    <div className="page_link">
+                       <a href="registration">Registration</a>
+                       <a href="forgetpassword">Forget Password</a>
+                    </div>
                  </div>  
                 </Card>
                 <Snackbar
