@@ -21,6 +21,8 @@ import NotesComponent from './pages/notescomponent';
 import TrashComponent from './pages/trashcomponent';
 import ArchiveComponent from './pages/archivecomponent';
 import LabelNoteComponent from './pages/labelnotecomponent';
+import ElasticSearch from './pages/elasticSearch';
+import Dashboard from './pages/dashboard';
 
 function App() {
   return (
@@ -47,6 +49,8 @@ function App() {
           <Route path='/gettrash' component={TrashComponent}/>
           <Route path='/getarchive' component={ArchiveComponent}/>
           <Route path='/getlabelnotes/:labelId' component={LabelNoteComponent}/>
+          <Route path='/dashboard' component={Dashboard} />
+          <Route path='/elasticsearch' component={ElasticSearch} />
         </Switch>
       </Router>
     </div>

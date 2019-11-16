@@ -11,7 +11,7 @@ import {trashNotes,archiveNote} from '../services/noteservice';
 import Color from '../pages/color';
 import Reminder from '../pages/addreminder';
 import Collaborator from './collaborator';
-import AddLabel from '../pages/addlabel'
+import AddLAbel from '../pages/addlabel'
 
 const options = [
     'None',
@@ -123,13 +123,29 @@ export default class properties extends Component {
                         },
                     }}
                 >
-                        <div>
+                        {/* <div>
                         <MenuItem >
                         <button onClick={this.handleDeleteNote}>  delete note</button>
                         </MenuItem>
                         <MenuItem >
                         <button onClick={this.handleAddLabel}> add label</button>
                         </MenuItem>
+                        </div> */}
+                         <div>
+                            <MenuItem  >
+                            <div>
+                                <span onClick={this.handleDeleteNote}>  delete note</span>
+                                </div>
+                            </MenuItem>
+                            <AddLAbel noteId={this.props.id}/>
+                            <MenuItem >
+
+
+                            <div>
+                                {/* <span  onClick={this.handleClick}> add label</span> */}
+                              
+                                </div>
+                            </MenuItem>
                         </div>
                 </Menu>
             </div >

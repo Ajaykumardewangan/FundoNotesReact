@@ -16,8 +16,9 @@ import { Grid } from '@material-ui/core';
 import Sidenav from '../pages/sidenav'
 import DisplayNote from '../pages/displaynote';
 import SearchNotes from './searchnotes';
-
-export default class PrimarySearchAppBar extends Component {
+import { searchNotesByElastic } from '../services/noteservice';
+import { withRouter } from 'react-router-dom';
+ class PrimarySearchAppBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,7 +27,8 @@ export default class PrimarySearchAppBar extends Component {
       view:true,
       searchData:'',
       viewMode:'',
-      searchedNotes:[]
+      searchedNotes:[],
+      data:'',
     }
   }
   toggleDrawer = async () => {
@@ -93,7 +95,33 @@ export default class PrimarySearchAppBar extends Component {
         view: !this.state.view
     })
 }
-
+// my service
+handleClear = () =>{
+  this.setState({
+ data:''
+ })
+ }
+ handleData = (event) =>{
+  this.setState({
+    data:event.target.value
+    })
+}
+goToSearch =() =>{
+  this.props.history.push('/elasticsearch')
+}
+handleSearch =(data) =>{
+  searchNotesByElastic(data).then(res => {
+    this.setState({
+      getSeachNote:res.data
+    })
+    this.props.headerToSearchGetNote(this.state.getSeachNote)
+   // this.props.history.push('/search')
+  }).catch(err =>{
+    console.log('data not fetch ',err);
+    
+  })
+ 
+}
   render() {
     return (
       <div>
@@ -112,19 +140,18 @@ export default class PrimarySearchAppBar extends Component {
               <span style={{ color: '#808080' }}>Fundo</span> Fundo
             </Typography>
             <div className="search"> 
-            {/* onClick={this.handleOnClickSearchbar} */}
               <div >
-                <SearchIcon onClick={this.searchNotes}/>
-                {/* onClick={this.searchNotes} */}
+                <SearchIcon onClick={()=>this.handleSearch(this.state.data)}/>
               </div>
               <InputBase className="searchbar"
                 placeholder="Search…"
-                value={this.state.searchData}
-                onChange = {this.onChangeOfSearchNotes}
-                inputProps={{ 'aria-label': 'search' }}
+                 value={this.state.data} 
+                 onChange={this.handleData}
+                 onClick={this.goToSearch}
               />
-              <IconButton>
-                <ClearIcon/>
+             
+               <IconButton >
+                <ClearIcon onClick={this.handleClear}/>
               </IconButton>
             </div>
 
@@ -149,9 +176,9 @@ export default class PrimarySearchAppBar extends Component {
         </AppBar>
            <div>
              {this.changeViewForSearchNotes()}
-             {/* <DisplayNote name={this.state.titleNotes} labelId={this.props.labelId} viewProps={this.state.view}/> */}
           </div>
       </div>
     );
   }
 }
+export default withRouter(PrimarySearchAppBar)

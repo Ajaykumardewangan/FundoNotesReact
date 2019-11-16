@@ -157,9 +157,9 @@ handleCreateNotes = () => {
     let displayAllNotes = this.state.allNotes.map((object,index) => {
       return (
           <div>
-          <Card className={cardView} onClick={()=>this.openDialog(object)} style={{backgroundColor:object.color}}> 
+          <Card className={cardView} style={{backgroundColor:object.color}}> 
            <div>
-           <CardContent>
+           <CardContent onClick={()=>this.openDialog(object)} >
            <div>
               <input style={{border:'none',outline:'none',width:'250px',
               backgroundColor:object.color}} type="text" value={object.noteTitle} 

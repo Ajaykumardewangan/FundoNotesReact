@@ -92,5 +92,10 @@ export function searchNotesByElastic(data) {
     console.log('under elastic search noteDate ',data);
     return axios.get(baseURL+'/notes/search_note?data='+data,{headers: {'token' :  localStorage.getItem('token')}});    
 }
+export function addLabelOnNotes(label,noteId) {
+    console.log('under update noteId ',noteId);
+    console.log('under update label ',label);
+    return axios.put(baseURL+'/notes/mappingNoteLabel?noteId='+noteId,label,{headers: {'token' :  localStorage.getItem('token')}});
+    }
 
 
