@@ -1,6 +1,8 @@
 import React from 'react';
-import { Card, TextField, Snackbar, IconButton, Button } from '@material-ui/core'
+import { Card, TextField, Snackbar, IconButton, Button, InputAdornment } from '@material-ui/core'
 import {forgetPassword} from '../services/userservice'
+import EmailIcon from '@material-ui/icons/Email';
+
 export default class ForgetPassword extends React.Component {
     constructor(props) {
         super(props);
@@ -57,6 +59,9 @@ export default class ForgetPassword extends React.Component {
                         variant="outlined"
                         value={this.state.email}
                         onChange={this.handleEmail}
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end"><EmailIcon></EmailIcon></InputAdornment>,
+                          }}
                     /> </div>
                     <div>
                     <Button id = "submit-button" variant="contained" color="primary" onClick={this.handleSubmit}>Login</Button>

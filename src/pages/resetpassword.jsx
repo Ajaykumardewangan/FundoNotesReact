@@ -1,6 +1,8 @@
 import React from 'react';
-import { Card, TextField, Snackbar, IconButton, Button } from '@material-ui/core'
+import { Card, TextField, Snackbar, IconButton, Button, InputAdornment } from '@material-ui/core'
 import {resetPassword } from '../services/userservice'
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+
 export default class ResetPassword extends React.Component {
 
     
@@ -76,21 +78,29 @@ export default class ResetPassword extends React.Component {
                         </h1>
                         <TextField
                             id="password"
+                            type="password"
                             placeholder="password"
                             variant="outlined"
                             value={this.state.password}
                             onChange={this.handlepassword}
+                            InputProps={{
+                                endAdornment: <InputAdornment position="end"><VisibilityOffIcon></VisibilityOffIcon></InputAdornment>,
+                              }}
                         /> <br /> <br /> <br />
 
                         <TextField
                             id="confirmPassword"
+                            type="password"
                             placeholder="Confirm Password"
                             variant="outlined"
                             value={this.state.confirmPassword}
                             onChange={this.handleConfirmPassword}
+                            InputProps={{
+                                endAdornment: <InputAdornment position="end"><VisibilityOffIcon></VisibilityOffIcon></InputAdornment>,
+                              }}
                         />
                         <div>
-                        <Button id = "submit-button" variant="contained" color="primary" onClick={this.handleSubmit}>Login</Button>
+                        <Button id = "submit-button" variant="contained" color="primary" onClick={this.handleSubmit}>Submit</Button>
                         </div>
                         <br/>
                     </div>

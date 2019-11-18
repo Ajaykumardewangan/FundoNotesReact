@@ -1,6 +1,9 @@
 import React from 'react';
-import { Card, TextField, Snackbar, IconButton, Button } from '@material-ui/core'
-import {login} from '../services/userservice'
+import { Card, TextField, Snackbar, IconButton, Button, InputAdornment } from '@material-ui/core'
+import {login} from '../services/userservice';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import EmailIcon from '@material-ui/icons/Email';
+
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -38,6 +41,11 @@ export default class Login extends React.Component {
                 openSnackBar: true,
                 snackBarMsg: "password cannot be empty"
             })
+        } else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.email)) {
+            this.setState({
+                openSnackBar: true,
+                snackBarMsg: 'Please provide a valid email address'
+            })
         }
         else {
             let data={
@@ -66,7 +74,7 @@ export default class Login extends React.Component {
                 <Card className="login-card">
                  <div> 
                     <h1>
-                        Fundoo Login
+                        <center>Fundoo Login</center>
                     </h1>
                     <TextField
                         id="email"
@@ -74,13 +82,20 @@ export default class Login extends React.Component {
                         variant="outlined"
                         value={this.state.email}
                         onChange={this.handleemail}
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end"><EmailIcon></EmailIcon></InputAdornment>,
+                          }}
                     /> <br/> <br/> <br/>
                     <TextField
+                        type="password"
                         id="password"
-                        placeholder="password"
+                        placeholder="********"
                         variant="outlined"
                         value={this.state.password}
                         onChange={this.handlepassword}
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end"><VisibilityOffIcon></VisibilityOffIcon></InputAdornment>,
+                          }}
                     />
                     <div>
                     <Button id = "submit-button" variant="contained" color="primary" onClick={this.handleSubmit}>Login</Button>

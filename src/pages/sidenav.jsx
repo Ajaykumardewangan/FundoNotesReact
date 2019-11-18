@@ -17,6 +17,7 @@ import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import {deleteLables,editLables,createLables} from '../services/labelservice'
+import { InputBase } from '@material-ui/core';
 // import { hashHistory } from 'react-router;'
 //import { HashRouter } from 'react-router-dom';
 
@@ -169,10 +170,10 @@ export default class Sidenav extends Component {
                     </Button>
                    
                     {this.state.open&& object.id===this.state.id ?
-                        <input type="text" value={object.labelName} style={{ border: 'none', outline: 'none', fontSize: '15px', width: '120px' }}
+                        <InputBase type="text" value={object.labelName} style={{ border: 'none', outline: 'none', fontSize: '15px', width: '120px' }}
                             onChange={this.handleLabel} onClick={() => this.onChange(object)} />
                         :
-                        <input type="text" value={object.labelName} style={{ border: 'none', outline: 'none', fontSize: '15px', width: '120px' }}
+                        <InputBase type="text" value={object.labelName} style={{ border: 'none', outline: 'none', fontSize: '15px', width: '120px' }}
                             onChange={() => this.handleLabels(object.labelName, object.id)} />
                     }
                     <Button style={{ marginLeft: '25px' }} onClick={() => this.editLabel(object.id)}>
@@ -237,11 +238,10 @@ export default class Sidenav extends Component {
                             </div>
                         </DialogContent>
                         <DialogActions >
-
                             <div>
                                 <Button onClick={this.openDialog}>
                                     Close
-          </Button >
+                                 </Button >
                             </div>
                         </DialogActions>
                     </Dialog>

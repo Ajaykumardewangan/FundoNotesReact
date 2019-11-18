@@ -8,7 +8,7 @@ import { TextareaAutosize } from '@material-ui/core';
 import RestoreFromTrashIcon from '@material-ui/icons/RestoreFromTrash';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Chip from '@material-ui/core/Chip'
-export default class TrashNotes extends Component {
+export default class Trash extends Component {
     constructor(props){
         super(props);
         this.state = {
