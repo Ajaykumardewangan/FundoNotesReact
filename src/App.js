@@ -27,6 +27,7 @@ import HeaderElastic from './pages/headerelastic';
 import PropertyArchive from './pages/propertyarchive';
 import HeaderArchive from './pages/headerarchive';
 import GetTrash from './pages/gettrash';
+import HeaderRemainder from './pages/headerremainder';
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           <Route path='/propertyarchive' component={PropertyArchive} />
           <Route path='/headerarchive' component={HeaderArchive} />
           <Route path='/trash' component={GetTrash} />
+          <Route path='/headerremainder' component={HeaderRemainder} />
         
         </Switch>
       </Router>

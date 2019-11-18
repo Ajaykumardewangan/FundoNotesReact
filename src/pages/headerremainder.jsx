@@ -12,13 +12,13 @@ import LoopIcon from '@material-ui/icons/Loop';
 import ViewAgendaIcon from '@material-ui/icons/ViewAgenda';
 import ViewColumnIcon from '@material-ui/icons/ViewColumn';
 import SettingsIcon from '@material-ui/icons/Settings';
-import { Grid, Menu } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Sidenav from '../pages/sidenav'
-import DisplayNote from '../pages/displaynote';
+import DisplayRemainder from '../pages/displayremainder';
 import SearchNotes from './searchnotes';
 import { searchNotesByElastic } from '../services/noteservice';
 import { withRouter } from 'react-router-dom';
- class PrimarySearchAppBar extends Component {
+ class HeaderRemainder extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,8 +29,6 @@ import { withRouter } from 'react-router-dom';
       viewMode:'',
       searchedNotes:[],
       data:'',
-      ITEM_HEIGHT:40,
-      anchorEl:'',
     }
   }
   toggleDrawer = async () => {
@@ -39,11 +37,6 @@ import { withRouter } from 'react-router-dom';
     });
     console.log(this.state.isOpen);
   };
-
-  handleLogout =() => {
-    localStorage.clear();
-    window.location.href='/login';
-  }
    
   searchNotes = () => {
     console.log("inside the search notes method  :--> ")
@@ -82,7 +75,7 @@ import { withRouter } from 'react-router-dom';
        return <SearchNotes searchdata={this.state.searchData} viewProps={this.state.view}/>
     }
     else{
-      return <DisplayNote name={this.state.titleNotes} labelId={this.props.labelId} viewProps={this.state.view}/>
+      return <DisplayRemainder name={this.state.titleNotes} labelId={this.props.labelId} viewProps={this.state.view}/>
     }
   }
 
@@ -101,17 +94,6 @@ import { withRouter } from 'react-router-dom';
     this.setState({
         view: !this.state.view
     })
-}
-
-handleClose = event=>{
-  this.setState({
-    anchorEl:event.target
-  })
-}
-handleClick =event => {
-  this.setState({
-    anchorEl:event.target
-  })
 }
 // my service
 handleClear = () =>{
@@ -185,44 +167,10 @@ handleSearch =(data) =>{
                 <SettingsIcon/>
               </IconButton>
             </div>
-            {/* <div style={{ display: 'flex', color: '#808080' }} className="profile-div">
+            <div style={{ display: 'flex', color: '#808080' }} className="profile-div">
               <Grid>
                 <img alt ='not found' style={{ width: '35px', height: '35px',borderRadius:'50%'}} src={require('../assets/images/ajay.jpeg')}/>
               </Grid>
-            </div> */}
-            <div>
-              <IconButton style = {{padding:'4px'}}
-              arial-label= "more"
-              aria-controls="long-menu"
-              aria-haspopup="true"
-              onClick={this.handleClick}
-              >
-                <img alt ='not found' style={{ width: '35px', height: '35px',borderRadius:'50%'}} src={require('../assets/images/ajay.jpeg')}/>
-               <Menu
-                    id="long-menu"
-                    anchorEl={this.state.anchorEl}
-                    keepMounted
-                    open={this.state.anchorEl}
-                    onClose={this.handleClose}
-                    PaperProps= {{
-                      style:{
-                        maxHeight:this.state.ITEM_HEIGHT*5,
-                        width:150,
-                      }
-                    }}
-               >
-               <div>
-                 <button>
-                   Sign out
-                 </button>
-               </div>
-               <div>
-                 <button onClick={this.handleLogout}>
-                    Log out
-                 </button>
-               </div>
-               </Menu>
-              </IconButton>
             </div>
           </Toolbar>
         </AppBar>
@@ -233,4 +181,4 @@ handleSearch =(data) =>{
     );
   }
 }
-export default withRouter(PrimarySearchAppBar)
+export default withRouter(HeaderRemainder)

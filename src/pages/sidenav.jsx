@@ -78,7 +78,7 @@ export default class Sidenav extends Component {
     }
 
     handleGetReminderNotes= () => {
-       this.props.history.push('/getremindernotes');
+       this.props.history.push('/headerremainder');
     }
     onChange = (data) => {
         let find = {

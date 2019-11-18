@@ -109,5 +109,9 @@ export  function updateinTrash(noteId) {
     return axios.put(baseURL+'/notes/trash?noteId='+noteId,null,{headers: {'token' :  localStorage.getItem('token')}}
     )
 }
+export  function getRemainderNotes() {
+    return axios.get(baseURL+'/notes/get_reminder',{headers: {'token' :  localStorage.getItem('token')}}
+    )
+}
 
 
