@@ -1,22 +1,15 @@
 import React, { Component } from 'react'
 import { IconButton, MenuItem } from '@material-ui/core';
-import AddAlertOutlinedIcon from '@material-ui/icons/AddAlertOutlined';
-import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
-import ColorLensOutlinedIcon from '@material-ui/icons/ColorLensOutlined';
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
-import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
+import UnarchiveIcon from '@material-ui/icons/Unarchive';
+
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import Menu from '@material-ui/core/Menu';
 import {trashNotes,archiveNote} from '../services/noteservice';
 import Color from '../pages/color';
 import Reminder from '../pages/addreminder';
 import Collaborator from './collaborator';
-import AddLAbel from '../pages/addlabel'
-
-const options = [
-    'None',
-    'Atria'
-  ];
+import AddLAbel from '../pages/addlabel';
   
 export default class properties extends Component {
     constructor(props) {
@@ -67,7 +60,14 @@ export default class properties extends Component {
             anchorEl:null
         })
     };
+    handleArchive = (noteId) =>{
+        archiveNote(noteId).then(res => {
+console.log('updata archive',res);
+        }).catch(err => {
+console.log('archive not update', err);
 
+        })
+    }
     handleAddLabel = () => {
 //<AddLabel/>
     }
@@ -96,8 +96,8 @@ export default class properties extends Component {
                         </IconButton>
                  </div>  
                  <div>
-                    <IconButton style={{padding:'4px'}} onClick={this.handleArchiveNote}>
-<ArchiveOutlinedIcon/>
+                    <IconButton style={{padding:'4px',marginRight:'15px'}} onClick={()=>this.handleArchive(this.state1.noteId)}>
+                  <UnarchiveIcon/>
                         </IconButton>
                  </div>  
                 
@@ -131,10 +131,7 @@ export default class properties extends Component {
                             </MenuItem>
                             <AddLAbel noteId={this.props.id}/>
                             <MenuItem >
-
-
-                            <div>
-                               
+                            <div>  
                                 </div>
                             </MenuItem>
                         </div>

@@ -3,15 +3,15 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { TextareaAutosize } from '@material-ui/core';
-import Properties from '../pages/properties';
-import {getNotes, getNotesOnLabel,updateNotes} from '../services/noteservice';
+import PropertyArchive from '../pages/propertyarchive';
+import {get_archivednotes, getNotesOnLabel,updateNotes} from '../services/noteservice';
 import Createnote from '../pages/createnote';
 import TrashProperties from './trashproperties';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import { InputBase } from '@material-ui/core';
-export default class DisplayNote extends Component {
+export default class DisplayArchive extends Component {
     constructor(props){
 super(props);
 this.state = {
@@ -38,7 +38,7 @@ this.state = {
       else {
         fetchedNoteName=this.state.titleNotes;
       }
-      getNotes(localStorage.getItem('token'),fetchedNoteName).then(res => {
+      get_archivednotes().then(res => {
          console.log('all notes are' + res.data);
          this.setState({
           doescheckfield:false,
@@ -82,7 +82,7 @@ handleProperties = (object) => {
   if(this.state.titleNotes === 'get_trash'){
     return <TrashProperties id={object.id}></TrashProperties>
   }else{
-  return <Properties id={object.id}/>
+  return <PropertyArchive id={object.id}/>
   }
 }
 handleCreateNotes = () => {
@@ -109,28 +109,7 @@ handleCreateNotes = () => {
     })
  }
 
-  // handleSubmit = (object,noteId) => {
-  //     //  let data={
-  //     //      "title":this.state.noteTitle,
-  //     //     "description": this.state.description,
-  //     //  }
-       
-  //      object.title = this.state.noteTitle;
-  //      object.description = this.state.description;
-
-  //      console.log('title  '+this.state.noteTitle);
-  //      console.log('desc  '+this.state.description);
-  //      console.log('note Id : ',noteId);
-  //      updateNotes(object).then(res=>{
-  //       // this.getAllNotes();
-  //          console.log("Response after hitting updatenote api is ",res);
-  //      }).catch(err=>{
-  //          console.log("Error after hitting updateNote api  ",err);      
-  //      })
-  //      this.setState({
-  //       doescheckfield:!this.state.doescheckfield
-  //      })
-  //     }
+ 
 
   handleSubmit = () => {
   this.setState({
@@ -193,7 +172,7 @@ handleCreateNotes = () => {
          </DialogContent>
             <DialogActions style={{backgroundColor:object.color}}>
           <div>
-          <Properties id={object.id}/>
+          <PropertyArchive id={object.id}/>
            </div>
           <div>
           <Button  color="primary" onClick={()=>this.handleSubmit()}>

@@ -86,11 +86,11 @@ export default class Sidenav extends Component {
         }
     }
     handleGetArchivedNotes= () =>{
-        this.props.history.push('/getarchive');  
+        this.props.history.push('/headerarchive');  
     }
     
     handleGetTrashedNotes= () => {
-        this.props.history.push('/gettrash'); 
+        this.props.history.push('/trash'); 
     }
     deleteLabel = (labelId) => {
         deleteLables(labelId).then(res => {

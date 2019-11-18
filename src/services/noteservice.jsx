@@ -26,12 +26,6 @@ export  function trashNotes(token,noteId) {
     return axios.put(baseURL+'/notes/trash?noteId='+noteId,null,{headers: {'token' :  token}}
     )
 }
-
-export  function archiveNote(token,noteId) {
-    return axios.put(baseURL+'/notes/archive?noteId='+noteId,null,{headers: {'token' :  token}}
-    )
-}
-
 export  function getNotesOnLabel(labelId) {
     console.log('got label id form url : ',labelId);
     const id = parseInt(labelId);
@@ -95,7 +89,25 @@ export function searchNotesByElastic(data) {
 export function addLabelOnNotes(label,noteId) {
     console.log('under update noteId ',noteId);
     console.log('under update label ',label);
-    return axios.put(baseURL+'/notes/mappingNoteLabel?noteId='+noteId,label,{headers: {'token' :  localStorage.getItem('token')}});
+    return axios.post(baseURL+'/notes/mappingNoteLabel?noteId='+noteId,label,{headers: {'token' :  localStorage.getItem('token')}});
     }
+    
+    export function get_archivednotes() {
+    return axios.get(baseURL+'/notes/get_archivednotes',{headers: {'token' :  localStorage.getItem('token')}});
+        }
+
+export  function archiveNote(noteId) {
+    return axios.put(baseURL+'/notes/archive?noteId='+noteId,null,{headers: {'token' :  localStorage.getItem('token')}}
+    )
+}
+
+export  function fetchTrashNote() {
+    return axios.get(baseURL+'/notes/get_trash',{headers: {'token' :  localStorage.getItem('token')}}
+    )
+}
+export  function updateinTrash(noteId) {
+    return axios.put(baseURL+'/notes/trash?noteId='+noteId,null,{headers: {'token' :  localStorage.getItem('token')}}
+    )
+}
 
 

@@ -23,6 +23,10 @@ import ArchiveComponent from './pages/archivecomponent';
 import LabelNoteComponent from './pages/labelnotecomponent';
 import ElasticSearch from './pages/elasticSearch';
 import Dashboard from './pages/dashboard';
+import HeaderElastic from './pages/headerelastic';
+import PropertyArchive from './pages/propertyarchive';
+import HeaderArchive from './pages/headerarchive';
+import GetTrash from './pages/gettrash';
 
 function App() {
   return (
@@ -51,6 +55,11 @@ function App() {
           <Route path='/getlabelnotes/:labelId' component={LabelNoteComponent}/>
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/elasticsearch' component={ElasticSearch} />
+          <Route path='/headerelastic' component={HeaderElastic} />
+          <Route path='/propertyarchive' component={PropertyArchive} />
+          <Route path='/headerarchive' component={HeaderArchive} />
+          <Route path='/trash' component={GetTrash} />
+        
         </Switch>
       </Router>
     </div>

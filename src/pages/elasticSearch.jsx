@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PrimarySearchAppBar from '../pages/header';
+import ElasticHeader from '../pages/headerelastic';
 import ElasticSearchNotesDispaly from '../pages/elasticSearchNotesDispaly';
 import { withRouter } from 'react-router-dom';
 class ElasticSearch extends Component {
@@ -20,7 +20,7 @@ class ElasticSearch extends Component {
             return (
 
                 <div>
-                    <PrimarySearchAppBar headerToSearchGetNote={this.modi} />
+                    <ElasticHeader headerToSearchGetNote={this.modi} />
                     <ElasticSearchNotesDispaly sendNotes={this.state.elasticSearchNotes} />
                 </div>
             )
