@@ -58,15 +58,15 @@
   opacity: 0;
 }
 .keep-img {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
 }
 .search {
   display: flex;
   border-radius: 8px;
   border: 0px;
   font-size: 15px; 
- margin-left: 40px;
+ margin-left: 130px;
   background: #f5f5f5;
   justify-content: center;
   width:52vw;
@@ -93,6 +93,7 @@
   box-shadow: none;
   background-color: yellow;
 }
+
 .labeltext{
   float: left;
   width: 142px;
@@ -112,6 +113,7 @@ vertical-align: middle;
 .profile-div {
  position: absolute;
  right: 0;
+ margin-right: 15px;
 }
 .icons-div {
   margin-left: 7vw;

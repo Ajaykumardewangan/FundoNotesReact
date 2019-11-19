@@ -25,11 +25,12 @@ const theme = createMuiTheme({
     overrides: {
         MuiDrawer: {
             paper: {
-                top: "65px"
+                top: "75px"
             },
             paperAnchorLeft: {
-                width: "250px", 
-                height:'auto'
+                width: "260px", 
+                height:'auto',
+                borderRight:'0px'
             }
         }
     }
@@ -164,7 +165,7 @@ export default class Sidenav extends Component {
         let displayallLables = this.state.allLabels.map((object,index) => {
             return (
                 <div>
-                <Button onClick={()=>this.handlelabelnote(object.id)}>
+                <Button onClick={()=>this.handlelabelnote(object.id)} style={{width:'100%'}}>
                     <LabelOutlinedIcon className="labelicon" />
                     <span className="labeltext" >{object.labelName}</span>
                 </Button>

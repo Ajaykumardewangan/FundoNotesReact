@@ -18,6 +18,7 @@ import DisplayNote from '../pages/displaynote';
 import SearchNotes from './searchnotes';
 import { searchNotesByElastic } from '../services/noteservice';
 import { withRouter } from 'react-router-dom';
+import { fontSize } from '@material-ui/system';
  class PrimarySearchAppBar extends Component {
   constructor(props) {
     super(props);
@@ -155,7 +156,7 @@ handleSearch =(data) =>{
               <img className="keep-img" alt='not found' src={require('../assets/images/keep.png')}/>
             </div>
             <Typography variant="h6" noWrap>
-              <span style={{ color: '#808080' }}>Fundo</span> Fundo
+              <span style={{ color: '#5C595A', fontSize:'24px',marginLeft:'8px' }}>Fundo</span>
             </Typography>
             <div className="search"> 
               <div >
@@ -190,7 +191,7 @@ handleSearch =(data) =>{
                 <img alt ='not found' style={{ width: '35px', height: '35px',borderRadius:'50%'}} src={require('../assets/images/ajay.jpeg')}/>
               </Grid>
             </div> */}
-            <div>
+            <div className="profile-div">
               <IconButton style = {{padding:'4px'}}
               arial-label= "more"
               aria-controls="long-menu"
