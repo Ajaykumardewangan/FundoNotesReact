@@ -92,6 +92,7 @@ handleClear = () =>{
   this.setState({
     data:event.target.value
     })
+    this.handleSearch(this.state.data);
 }
 goToSearch =() =>{
   this.props.history.push('/elasticsearch')
