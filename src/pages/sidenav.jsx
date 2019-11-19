@@ -17,7 +17,7 @@ import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import {deleteLables,editLables,createLables} from '../services/labelservice'
-import { InputBase } from '@material-ui/core';
+import { InputBase, Input } from '@material-ui/core';
 // import { hashHistory } from 'react-router;'
 //import { HashRouter } from 'react-router-dom';
 
@@ -102,6 +102,7 @@ export default class Sidenav extends Component {
             console.log("label not deleted  ", err);
         })
     }
+
     handleLabels = async (labelName, labelId) => {
         // console.log("label name is ", labelName);
         // console.log("label id is ", labelId);
@@ -111,6 +112,7 @@ export default class Sidenav extends Component {
             open: true,
         })
     }
+
     editLabel = (labelId) => {
         let data = {
             "labelName": this.state.labelName
@@ -122,20 +124,22 @@ export default class Sidenav extends Component {
         }).catch(err => {
             console.log("label not deleted  ", err);
         })
-       
     }
+
     handleLabel = (event) => {
         this.setState({
             labelName: event.target.value
         })
     }
+
     handleLabelInput = (event) => {
         this.setState({
             labelName: event.target.value
         })
     }
+
     handleSubmit = () => {
-        if (this.state.label !== '') {
+        if (this.state.labelName !== '') {
             let data = {
                 "labelName": this.state.labelName
             }
@@ -152,13 +156,19 @@ export default class Sidenav extends Component {
             })
         }
     }
+    handlelabelnote=(labelId)=>{
+        console.log("label id",labelId)
+        this.props.history.push('/displaynoteonlabel/'+labelId);
+    }
     render() {
         let displayallLables = this.state.allLabels.map((object,index) => {
             return (
-                <Button onClick={()=>this.handleGetNotesOfLabel(object.id)}>
-                    <LabelOutlinedIcon  />
-                    <span className="labeltext">{object.labelName},{object.id}</span>
+                <div>
+                <Button onClick={()=>this.handlelabelnote(object.id)}>
+                    <LabelOutlinedIcon className="labelicon" />
+                    <span className="labeltext" >{object.labelName}</span>
                 </Button>
+                </div>
             )
         })
 
@@ -170,10 +180,10 @@ export default class Sidenav extends Component {
                     </Button>
                    
                     {this.state.open&& object.id===this.state.id ?
-                        <InputBase type="text" value={object.labelName} style={{ border: 'none', outline: 'none', fontSize: '15px', width: '120px' }}
+                        <Input type="text" value={this.state.labelName} style={{ border: 'none', outline: 'none', fontSize: '15px', width: '120px' }}
                             onChange={this.handleLabel} onClick={() => this.onChange(object)} />
                         :
-                        <InputBase type="text" value={object.labelName} style={{ border: 'none', outline: 'none', fontSize: '15px', width: '120px' }}
+                        <Input type="text" value={object.labelName} style={{ border: 'none', outline: 'none', fontSize: '15px', width: '120px' }}
                             onChange={() => this.handleLabels(object.labelName, object.id)} />
                     }
                     <Button style={{ marginLeft: '25px' }} onClick={() => this.editLabel(object.id)}>
@@ -237,7 +247,7 @@ export default class Sidenav extends Component {
                                 </div>
                             </div>
                         </DialogContent>
-                        <DialogActions >
+                        <DialogActions>
                             <div>
                                 <Button onClick={this.openDialog}>
                                     Close
