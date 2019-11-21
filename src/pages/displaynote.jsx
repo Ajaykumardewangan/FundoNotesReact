@@ -212,7 +212,7 @@ handleCreateNotes = () => {
         </div>
         <div className="note-div">
           {displayAllNotes}
-        </div>
+          </div>
      </div>
   );
 }

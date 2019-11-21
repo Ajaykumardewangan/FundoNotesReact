@@ -173,7 +173,6 @@ handleSearch =(data) =>{
                 <ClearIcon onClick={this.handleClear}/>
               </IconButton>
             </div>
-
             <div/>
             <div style={{ display: 'flex', color: '#808080' }}className="icons-div">
               <IconButton color="inherit"  onClick={this.handleRefresh}>

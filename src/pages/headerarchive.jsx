@@ -12,7 +12,7 @@ import LoopIcon from '@material-ui/icons/Loop';
 import ViewAgendaIcon from '@material-ui/icons/ViewAgenda';
 import ViewColumnIcon from '@material-ui/icons/ViewColumn';
 import SettingsIcon from '@material-ui/icons/Settings';
-import { Grid } from '@material-ui/core';
+import { Grid, Menu } from '@material-ui/core';
 import Sidenav from '../pages/sidenav'
 import DisplayArchive from '../pages/displayarchive';
 import SearchNotes from './searchnotes';
@@ -29,6 +29,8 @@ import { withRouter } from 'react-router-dom';
       viewMode:'',
       searchedNotes:[],
       data:'',
+      ITEM_HEIGHT:40,
+      anchorEl:''
     }
   }
   toggleDrawer = async () => {
@@ -37,6 +39,22 @@ import { withRouter } from 'react-router-dom';
     });
     console.log(this.state.isOpen);
   };
+
+  handleClose = event=>{
+    this.setState({
+      anchorEl:event.target
+    })
+  }
+
+  handleLogout =() => {
+    localStorage.clear();
+    window.location.href='/login';
+  }
+  handleClick =event => {
+    this.setState({
+      anchorEl:event.target
+    })
+  }
    
   searchNotes = () => {
     console.log("inside the search notes method  :--> ")
@@ -137,7 +155,7 @@ handleSearch =(data) =>{
               <img className="keep-img" alt='not found' src={require('../assets/images/keep.png')}/>
             </div>
             <Typography variant="h6" noWrap>
-              <span style={{ color: '#808080' }}>Fundo</span> Fundo
+              <span style={{ color: '#5C595A', fontSize:'24px',marginLeft:'8px'}}>Fundo</span>
             </Typography>
             <div className="search"> 
               <div >
@@ -167,10 +185,44 @@ handleSearch =(data) =>{
                 <SettingsIcon/>
               </IconButton>
             </div>
-            <div style={{ display: 'flex', color: '#808080' }} className="profile-div">
+            {/* <div style={{ display: 'flex', color: '#808080' }} className="profile-div">
               <Grid>
                 <img alt ='not found' style={{ width: '35px', height: '35px',borderRadius:'50%'}} src={require('../assets/images/ajay.jpeg')}/>
               </Grid>
+            </div> */}
+            <div className="profile-div">
+              <IconButton style = {{padding:'4px'}}
+              arial-label= "more"
+              aria-controls="long-menu"
+              aria-haspopup="true"
+              onClick={this.handleClick}
+              >
+                <img alt ='not found' style={{ width: '35px', height: '35px',borderRadius:'50%'}} src={require('../assets/images/ajay.jpeg')}/>
+               <Menu
+                    id="long-menu"
+                    anchorEl={this.state.anchorEl}
+                    keepMounted
+                    open={this.state.anchorEl}
+                    onClose={this.handleClose}
+                    PaperProps= {{
+                      style:{
+                        maxHeight:this.state.ITEM_HEIGHT*5,
+                        width:150,
+                      }
+                    }}
+               >
+               <div>
+                 <button>
+                   Sign out
+                 </button>
+               </div>
+               <div>
+                 <button onClick={this.handleLogout}>
+                    Log out
+                 </button>
+               </div>
+               </Menu>
+              </IconButton>
             </div>
           </Toolbar>
         </AppBar>

@@ -156,7 +156,7 @@ handleSearch =(data) =>{
               <img className="keep-img" alt='not found' src={require('../assets/images/keep.png')}/>
             </div>
             <Typography variant="h6" noWrap>
-              <span style={{ color: '#808080' }}>Fundo</span> Fundo
+              <span style={{ color: '#5C595A', fontSize:'24px',marginLeft:'8px'}}>Fundo</span>
             </Typography>
             <div className="search"> 
               <div >
